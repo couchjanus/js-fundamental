@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started with JavaScript</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body { padding: 30px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- start javascript -->
+  <script>
+  
+  document.body.style.backgroundColor = 'red';
+  
+  // document.body.style.backgroundColor = '';
+
+    // strings
+    var srt1 = 'this is my string',
+        srt2 = 'my second string',
+        srt3 = "my name is chris";
+
+    // numbers
+    let num1 = 10,
+        num2 = 500,
+        num3 = 3.14;
+
+    // booleans (truthy / falsy)
+    let b1 = true;
+        b2 = false;
+    
+    // specials
+    let sp1 = undefined,
+        sp2 = null,
+        sp3 = NaN;
+
+    // ======================
+    // declaring variables
+
+    let myVariable;
+
+    myVariable = 'something';
+    console.log(myVariable);
+    
+    var thing = 'first';
+    let newThing     = 'third';
+    
+    // objects
+    const user = {
+      name: 'Chris',
+      username: 'chrisoncode' 
+    };
+
+    // arrays 
+    const users = ['chris', 'nick', 'holly'];
+    const luckyNumbers = [1, 43, 54, 132];
+    const whatever = ['chris', 1, 'holly'];
+    
+    const superUsers = [
+      { name: 'chris' },
+      { name: 'nick' },
+      { name: 'holly' }
+    ];
+
+    console.log(superUsers[2].name);
+
+    const otherThing = {
+      name: 'chris'  
+    };
+    console.log(otherThing.name);
+    
+    otherThing.name = 'holly';
+
+    console.log(otherThing.name);
+  
+  </script>
+</body>
+</html>
