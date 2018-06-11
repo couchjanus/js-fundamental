@@ -1,48 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Getting Started with JavaScript</title>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello cart</title>
+    <script defer src="fontawesome/js/fontawesome-all.js"></script>
+    <link rel="stylesheet" href="css/main.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <style>
-    body { padding: 30px; }
+    <style>
+         
+    </style>
+  </head>
 
-    .nav li{
-        display: inline-block;
-    }
-    .nav li a {
-        text-decoration: none;
-        color: white;
-        background:red;
-        padding: 1em;
-    }
+  <body>
+    <nav class="navbar">
+      <nav class="wrapper">
+        <div class="logo"><img src="images/logo.png"></div><!-- Logo -->
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="label-toggle"></label>
+        <ul class="flexmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" id="cart-trigger"><i class="fas  fa-shopping-cart"></i>&nbsp;Cart</a></li>
+        </ul>
+      </nav>
+    </nav>
+    <h1>Hello, Cart!</h1>        
+        
+    <div class="grid-layout">
+      <article class="grid-item">
+        <div class="product">
+          <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+          <div class="icon">
+            <div class="icon-background"></div>
+            <span class="shopping-cart">
+              <i class="fas fa-shopping-cart fa-2x"></i>
+            </span>
+          </div>
+          <div class="product-picture">
+            <img src="images/cat3.jpg" alt="Nice Cat" />
+          </div>
+          <div class="product-menu">
+            <div class="product-price">
+              $9.99
+            </div>
+            <div class="buy-now">
+              Buy now!
+            </div>
+            <div class="product-detail">
+              Detail
+            </div>
+    
+            <div class="how-many">
+              <div class="quantity-input">
+                <input class="minus btn" type="button" value="-">
+                <input class="input-text quantity text" value="3" size="4">
+                <input class="plus btn" type="button" value="+">
+              </div>
+            </div>
+            <div class="cancel">
+              Cancel
+            </div>
+            <div class="add-to-cart">
+              Add to Cart!
+            </div>
+          </div>
+        </div>
+        
+      </article>
+      <article class="grid-item">
+        <div class="product">
+            <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+            <div class="icon">
+              <div class="icon-background"></div>
+              <span class="shopping-cart">
+                <i class="fas fa-shopping-cart fa-2x"></i>
+              </span>
+            </div>
+            <div class="product-picture">
+              <img src="images/cat3.jpg" alt="Nice Cat" />
+            </div>
+            <div class="product-menu">
+              <div class="product-price">
+                $9.99
+              </div>
+              <div class="buy-now">
+                Buy now!
+              </div>
+              <div class="product-detail">
+                Detail
+              </div>
+      
+              <div class="how-many">
+                <div class="quantity-input">
+                  <input class="minus btn" type="button" value="-">
+                  <input class="input-text quantity text" value="3" size="4">
+                  <input class="plus btn" type="button" value="+">
+                </div>
+              </div>
+              <div class="cancel">
+                Cancel
+              </div>
+              <div class="add-to-cart">
+                Add to Cart!
+              </div>
+            </div>
+        </div>
+          
+      </article>
+      
+      <article class="grid-item">
+          <div class="product">
+              <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+              <div class="icon">
+                <div class="icon-background"></div>
+                <span class="shopping-cart">
+                  <i class="fas fa-shopping-cart fa-2x"></i>
+                </span>
+              </div>
+              <div class="product-picture">
+                <img src="images/cat3.jpg" alt="Nice Cat" />
+              </div>
+              <div class="product-menu">
+                <div class="product-price">
+                  $9.99
+                </div>
+                <div class="buy-now">
+                  Buy now!
+                </div>
+                <div class="product-detail">
+                  Detail
+                </div>
+        
+                <div class="how-many">
+                  <div class="quantity-input">
+                    <input class="minus btn" type="button" value="-">
+                    <input class="input-text quantity text" value="3" size="4">
+                    <input class="plus btn" type="button" value="+">
+                  </div>
+                </div>
+                <div class="cancel">
+                  Cancel
+                </div>
+                <div class="add-to-cart">
+                  Add to Cart!
+                </div>
+              </div>
+            </div>
+            
+      </article>
+     
+    
+    </div>            
+    
+    <!-- Footer Area Start -->
+    <footer id="footer">
+    </footer>
+    <!-- Footer Area Stop -->
 
-  </style>
-</head>
+    <!-- Aside Area Start -->
+    <aside id="cart-sidebar" class="cart">
+        <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
+        
+        <h2>Cart</h2>
+        <!-- cart-items start-->
+        <ul class="cart-items">
+            <li>
+                <span class="item-quantity">1x</span> <span class="item-name">Product Name</span>
+                <div class="item-price">$9.99</div>
+                <a href="#0" class="item-remove"></a>
+            </li>
+        </ul> 
+        <!-- cart-items end -->
+    
+        <div class="cart-total">
+            <p>Total <span>$39.96</span></p>
+        </div> <!-- cart-total -->
+    
+        <a href="#" class="checkout-button">Checkout</a>
+    </aside> <!-- cart end -->
+    <!-- Aside Area end -->             
 
-<body>
+    <script>
+    
+    document.addEventListener("DOMContentLoaded", ready);
 
- <h1>Gallery</h1>
+        function ready() {
+            document.getElementById("cart-trigger").addEventListener('click', function () {
+                document.getElementById("cart-sidebar").classList.add('show-sidebar');
+                }
+            );
+            
+            document.querySelector("#cart-sidebar .remove").addEventListener('click', function () {
+              if (document.getElementById("cart-sidebar").classList.contains("show-sidebar")) {
 
-<ul class="nav">
-      <li><a href="#" id="img1" onclick="changeImg(1);">Image 1</a></li>
-      <li><a href="#" id="img2" onclick="changeImg(2);">Image 2</a></li>
-      <li><a href="#" id="img3" onclick="changeImg(3);">Image 3</a></li>
-</ul>
+                document.getElementById("cart-sidebar").classList.remove('show-sidebar');
+                }
+              }
+            );
 
-  <div id="pic">
-      <img src="images/1.jpg" />
-  </div>
+            var hamburgerToggle = document.querySelector('#menu-toggle');
+    
+            hamburgerToggle.addEventListener('click', function(e){
+                e.preventDefault();
+                
+                document.querySelector('.flexmenu').classList.toggle('active');
+            });
 
-</div>
-
-<script>
-    function changeImg(i){
-         var pic = document.getElementById("pic");
-         pic.innerHTML = '<img src="images/'+i+'.jpg" />';
+            
         }
-</script>
-
-</body>
+      </script>
+  </body>
 </html>
