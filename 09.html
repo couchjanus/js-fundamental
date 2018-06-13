@@ -28,7 +28,7 @@
         </ul>
       </nav>
     </nav>
-    <h1 id="hello">Hello, Cart!</h1>        
+    <h1>Hello, Cart!</h1>        
         
     <div class="grid-layout">
       <article class="grid-item">
@@ -152,72 +152,71 @@
             </div>
             
       </article>
-     
+      <article class="grid-item">
+        <div class="product">
+                <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+                <div class="icon">
+                  <div class="icon-background"></div>
+                  <span class="shopping-cart">
+                    <i class="fas fa-shopping-cart fa-2x"></i>
+                  </span>
+                </div>
+                <div class="product-picture">
+                  <img src="images/cat3.jpg" alt="Nice Cat" />
+                </div>
+                <div class="product-menu">
+                  <div class="product-price">
+                    $9.99
+                  </div>
+                  <div class="buy-now">
+                    Buy now!
+                  </div>
+                  <div class="product-detail">
+                    Detail
+                  </div>
+          
+                  <div class="how-many">
+                    <div class="quantity-input">
+                      <input class="minus btn" type="button" value="-">
+                      <input class="input-text quantity text" value="3" size="4">
+                      <input class="plus btn" type="button" value="+">
+                    </div>
+                  </div>
+                  <div class="cancel">
+                    Cancel
+                  </div>
+                  <div class="add-to-cart">
+                    Add to Cart!
+            </div>
+          </div>
+        </div>
+      </article>
     
     </div>            
-    
-    <!-- Footer Area Start -->
-    <footer id="footer">
-    </footer>
-    <!-- Footer Area Stop -->
-
-    <!-- Aside Area Start -->
-    <aside id="cart-sidebar" class="cart">
-        <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
-        
-        <h2>Cart</h2>
-        <!-- cart-items start-->
-        <ul class="cart-items">
-            <li>
-                <span class="item-quantity">1x</span> <span class="item-name">Product Name</span>
-                <div class="item-price">$9.99</div>
-                <a href="#0" class="item-remove"></a>
-            </li>
-        </ul> 
-        <!-- cart-items end -->
-    
-        <div class="cart-total">
-            <p>Total <span>$39.96</span></p>
-        </div> <!-- cart-total -->
-    
-        <a href="#" class="checkout-button">Checkout</a>
-    </aside> <!-- cart end -->
-    <!-- Aside Area end -->             
-    
-
-
-    <script src="js/jquery.min.js"></script>
+               
+    <script src="js/jquery.min.js"></script>             
+    <!-- <script src="/js/main.js"></script> -->
     <script>
 
+       $(function () {
 
-        // Например, выбрать все элементы, имеющие класс btn:
-        console.log($(".btn"));
-        // также можно записать следующим образом:
-        console.log($("*.btn"));
+          const cart_trigger = $('#cart-trigger');
 
-        // Получить DOM-элемент с идентификатором cart-sidebar
-        console.log($('#cart-sidebar'));
-        
-        // Получить все элементы с классом product
-        console.log($('.product'));
-                      
-        // JQuery Получить все элементы div
-        console.log($('div'));
+          console.log(cart_trigger, "It's Cart Trigger");
+          // Object [ a#cart-trigger ] It's Cart Trogger
 
-        // JQuery Получить все div с классом icon
-        console.log($('div.icon'));
+          $('#cart-trigger').click(function(){
+            console.log("jQuery click: It's Cart Trigger");
+          });
+          
+        //   $('#cart-trigger').on('click', function(){
+        //     console.log("jQuery Event on: It's Cart Trigger");
+        //   });
 
-        
-        // JQuery Получить все элементы span внутри div
-        console.log($($('div span')));
-        
-        // JQuery Получить все элементы span внутри div
-        console.log($($($('div').find('span'))));
-                
-        // JQuery Получить все элементы span внутри div
-        console.log($($('div > span')));
-        
-    </script>
+
+        });
+      
+      </script>
     
   </body>
 </html>

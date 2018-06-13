@@ -22,6 +22,12 @@
       display: none;
     }
 
+    .red_border{
+        color: aquamarine;
+        background-color: black;
+        border: crimson solid 2px;
+    }
+
   </style>
 </head>
 
@@ -45,18 +51,19 @@
 <script>
   //DOM-дерево готово
   $(function() {
-      // массив, содержащий набор DOM-элементов Р
-      var myArrayP = document.getElementsByTagName("P") ; 
 
-      $("div").text(
-        $("p").text()
-        +' Counts p : '
-        + $(myArrayP).length
-      );
-      $("div").css({
-        "color":"red",
-        "font-size": "3em"
-      });
+    // массив, содержащий набор DOM-элементов Р
+    var arrayP = $("p"); 
+    for (var i=0; i<arrayP.length; i++){
+        arrayP[i].innerHTML = i + ' DOM-дерево готово';
+    }
+    $('p').addClass('red_border');
+    // $('p').removeClass('red_border');
+
+    // if($('p').hasClass('red_border')){
+    //     console.log('Element has class', 'red_border'); 
+    // }
+    // $('p').toggleClass('red_border');
   });
 
 </script>
