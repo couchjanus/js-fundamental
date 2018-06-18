@@ -80,29 +80,31 @@
           </div>  
         </article>            
      
-                <article class="grid-item">
-                  <div class="product-wrapper">    
-                    <div class="product">
-                        <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
-                        <div class="icon">
-                            <div class="icon-background"></div>
-                            <span class="shopping-cart">
-                            <i class="fas fa-shopping-cart fa-2x"></i>
-                            </span>
-                        </div>
-                        <div class="product-picture">
-                            <img src="images/cat3.jpg" alt="Nice Cat" />
-                        </div>
-                        <div class="product-menu">
-                            <div class="product-price">
+        <article class="grid-item">
+            <div class="product-wrapper">    
+                <div class="product">
+                    <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+                    <div class="icon">
+                        <div class="icon-background"></div>
+                        <span class="shopping-cart">
+                           <i class="fas fa-shopping-cart fa-2x"></i>
+                        </span>
+                    </div>
+                        
+                    <div class="product-picture">
+                        <img src="images/cat3.jpg" alt="Nice Cat" />
+                    </div>
+                        
+                    <div class="product-menu">
+                        <div class="product-price">
                             $9.99
-                            </div>
-                            <div class="buy-now">
+                        </div>
+                        <div class="buy-now">
                             Buy now!
-                            </div>
-                            <div class="product-detail">
+                        </div>
+                        <div class="product-detail">
                             Detail
-                            </div>
+                        </div>
                     
                             <div class="how-many">
                             <div class="quantity-input">
@@ -292,6 +294,58 @@
         </footer>
     </div>
 
+    <script id="template-product-item" type="text/template">
+    
+        <div class="product-wrapper">    
+            <div class="product">
+                <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+                <div class="icon">
+                    <div class="icon-background"></div>
+                    <span class="shopping-cart">
+                       <i class="fas fa-shopping-cart fa-2x"></i>
+                    </span>
+                </div>
+                    
+                <div class="product-picture">
+                    <img src="images/cat3.jpg" alt="Nice Cat" />
+                </div>
+                    
+                <div class="product-menu">
+                    <div class="product-price">
+                        $9.99
+                    </div>
+                    <div class="buy-now">
+                        Buy now!
+                    </div>
+                    <div class="product-detail">
+                        Detail
+                    </div>
+                
+                        <div class="how-many">
+                        <div class="quantity-input">
+                            <input class="minus btn" type="button" value="-">
+                            <input class="input-text quantity text" value="3" size="4">
+                            <input class="plus btn" type="button" value="+">
+                        </div>
+                        </div>
+                        <div class="cancel">
+                        Cancel
+                        </div>
+                        <div class="add-to-cart">
+                        Add to Cart!
+                        </div>
+                    </div>
+                </div>
+                <div class="product-back">
+                    <span class="check">
+                        <i class="fas fa-check fa-4x"></i>
+                        <p>Success!</p>
+                    </span>
+                    
+                </div>
+              </div>  
+           
+        </script>
     <script>
       
         function toggle_panel(panel, background_layer) {
@@ -334,40 +388,79 @@
                 mega.classList.remove('mega-active');
             });
 
-
-            let buy = document.querySelector('.buy-now');
-
-            buy.addEventListener('click', function () {
-            document.querySelector('.product .product-name').style.display = 'none';
-            document.querySelector('.product .icon').style.display = 'none';
-            document.querySelector('.product .buy-now').style.display = 'none';
-            document.querySelector('.product .product-detail').style.display = 'block';
-            document.querySelector('.product-menu').style.top = '40%';
-            });
-
-            let cancel = document.querySelector('.cancel');
-            cancel.addEventListener('click', function () {
-            document.querySelector('.product .product-name').style.display = 'block';
-            document.querySelector('.product .icon').style.display = 'block';
-            document.querySelector('.product .buy-now').style.display = 'block';
-            document.querySelector('.product .product-detail').style.display = 'none';
-            document.querySelector('.product-menu').style.top = '80%';
-            });
-
-            let addcart = document.querySelector('.add-to-cart');
-      
-            addcart.addEventListener('click', function () {
-                var y = 180;
-                document.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
-                document.querySelector('.product-back').classList.add('back-is-visible');
+            var buy = document.getElementsByClassName('buy-now');
+            
+            for (let i=0; i<buy.length; i++ ){
                 
-            });      
+                buy[i].addEventListener('click', function (e) {
+                    //  console.log(e.target)
+                    e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'none';
+                    e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'none';
+                    e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'none';
+                    e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'block';
+                    e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '40%';
+                });
+ 
+           }
+           
 
+            var cancel = document.getElementsByClassName('cancel');
+            
+            for (let i=0; i<buy.length; i++ ){
+
+            cancel[i].addEventListener('click', function (e) {
+                e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'block';
+                e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'block';
+                e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'block';
+                e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'none';
+                e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '80%';
+            });
+            }
+            
+            var addcart = document.getElementsByClassName('add-to-cart');
+
+            for (let i=0; i<addcart.length; i++ ){
+                
+                addcart[i].addEventListener('click', function (e) {
+                var y = 180;
+                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
+                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-back').classList.add('back-is-visible');
+
+                createProduct();
+                
+            });          
+            }
+
+        let plus = document.getElementsByClassName('plus');
+            for (let i=0;i<plus.length; i++) {
+                plus[i].addEventListener('click', function(e) {
+                let val = parseInt(e.target.previousElementSibling.getAttribute('value'));
+                e.target.previousElementSibling.setAttribute('value', val+1);
+            });
         }
+        let minus = document.getElementsByClassName('minus');
+            for (let i=0;i<minus.length; i++) {
+                  minus[i].addEventListener('click', function(e) {
+                  let val = parseInt(e.target.nextElementSibling.getAttribute('value'));
+                  e.target.nextElementSibling.setAttribute('value', val-1);
+            });
+        }
+        }
+
+      function createProduct(){
+        var article = document.createElement("article");
+        article.innerHTML = document.getElementById("template-product-item").innerHTML;
+        article.setAttribute('class', "grid-item");
+        document.querySelector('.grid-layout').appendChild(article);
+      }
 
         document.addEventListener("DOMContentLoaded", ready);
         
+        
+    </script>
 
-      </script>
+
+
+    
   </body>
 </html>

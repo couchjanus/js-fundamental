@@ -293,7 +293,25 @@
             </ul>
         </footer>
     </div>
-    
+
+    <template id="cartItem">
+        <li>
+          <span class="productInCart"></span>
+            <span class="qty">
+              <span class="item-quantities">
+              </span>
+              <span class="item-name">
+              </span>
+            </span>
+            <div class="item-prices">
+            </div>
+            <a class="item-remove" href="#0"></a>
+        </li>
+    </template>
+  
+        
+
+
     <script>
       
         function toggle_panel(panel, background_layer) {
@@ -364,19 +382,53 @@
                 e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '80%';
             });
             }
+            
+            var addcart = document.getElementsByClassName('add-to-cart');
 
-            let addcart = document.querySelector('.add-to-cart');
-      
-            addcart.addEventListener('click', function () {
-                var y = 180;
-                document.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
-                document.querySelector('.product-back').classList.add('back-is-visible');
+            for (let i=0; i<addcart.length; i++ ){
                 
-            });     
+                addcart[i].addEventListener('click', function (e) {
+                var y = 180;
+                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
+                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-back').classList.add('back-is-visible');
+
+                // Проверяем поддерживает ли браузер тег <template>
+                // проверив наличие аттрибута content у элемента template
+                if ('content' in document.createElement('template')) {
+                    let template = document.querySelector('#cartItem').content;
+                    let quantity = this.parentNode.querySelectorAll(":scope > .how-many .quantity-input .quantity");
+                    template.querySelector("span.item-quantities").textContent = quantity[0].getAttribute('value');
+                    template.querySelector("span.item-name").textContent = ' '+this.parentNode.parentNode.querySelectorAll(":scope > .product-name")[0].textContent; 
+                    template.querySelector('.item-prices').textContent = this.parentNode.querySelectorAll(":scope > .product-price")[0].textContent;
+                    document.querySelector('.cart-items').append(document.importNode(template, true));
+                
+                } else {
+                // необходимо найти другой способ добавить element т.к.
+                // тег <template> не поддерживатся браузером
+                }
+                
+                
+            });          
+            }
+
+        let plus = document.getElementsByClassName('plus');
+            for (let i=0;i<plus.length; i++) {
+                plus[i].addEventListener('click', function(e) {
+                let val = parseInt(e.target.previousElementSibling.getAttribute('value'));
+                e.target.previousElementSibling.setAttribute('value', val+1);
+            });
+        }
+        let minus = document.getElementsByClassName('minus');
+            for (let i=0;i<minus.length; i++) {
+                  minus[i].addEventListener('click', function(e) {
+                  let val = parseInt(e.target.nextElementSibling.getAttribute('value'));
+                  e.target.nextElementSibling.setAttribute('value', val-1);
+            });
+        }
         }
 
-
         document.addEventListener("DOMContentLoaded", ready);
-      </script>
+        
+    </script>
   </body>
 </html>

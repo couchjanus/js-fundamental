@@ -194,6 +194,21 @@
                 </ul>
             </footer>
         </div>
+
+        <template id="cartItem">
+          <li>
+            <span class="productInCart"></span>
+              <span class="qty">
+                <span class="item-quantities">
+                </span>
+                <span class="item-name">
+                </span>
+              </span>
+              <div class="item-prices">
+              </div>
+              <a class="item-remove" href="#0"></a>
+          </li>
+        </template>
                
     <script src="js/jquery.min.js"></script>             
     <!-- <script src="/js/main.js"></script> -->
@@ -258,24 +273,34 @@
                 $(e.target).parents('.product-wrapper')
                 .css('transform', 'rotateY(' + y + 'deg)');
                 $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
+
+                var $template = $($('#cartItem').html());
+                
+                $template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+        
+                $template.find(".item-quantities").after(' '+$(this).parents(".product").children(".product-name").text()); 
+        
+                $template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
+                $(".cart-items").append($template);
             });
         });
 
-      $(".plus").click(function(e) {
-       var val = parseInt($(e.target).prev().attr('value'));
+       $(".plus").click(function() {
+       var val = parseInt($(this).prev().attr('value'));
        $(this).prev().attr('value', val+1);
        });
 
-      $(".minus").click(function(e) {
-       var val = parseInt($(e.target).next().attr('value'));
+      $(".minus").click(function() {
+       var val = parseInt($(this).next().attr('value'));
        $(this).next().attr('value', val-1);
        });
+
     });
-    
+
+
     </script>
 
-
   
-  
+    
   </body>
 </html>

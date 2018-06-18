@@ -80,29 +80,31 @@
           </div>  
         </article>            
      
-                <article class="grid-item">
-                  <div class="product-wrapper">    
-                    <div class="product">
-                        <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
-                        <div class="icon">
-                            <div class="icon-background"></div>
-                            <span class="shopping-cart">
-                            <i class="fas fa-shopping-cart fa-2x"></i>
-                            </span>
-                        </div>
-                        <div class="product-picture">
-                            <img src="images/cat3.jpg" alt="Nice Cat" />
-                        </div>
-                        <div class="product-menu">
-                            <div class="product-price">
+        <article class="grid-item">
+            <div class="product-wrapper">    
+                <div class="product">
+                    <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+                    <div class="icon">
+                        <div class="icon-background"></div>
+                        <span class="shopping-cart">
+                           <i class="fas fa-shopping-cart fa-2x"></i>
+                        </span>
+                    </div>
+                        
+                    <div class="product-picture">
+                        <img src="images/cat3.jpg" alt="Nice Cat" />
+                    </div>
+                        
+                    <div class="product-menu">
+                        <div class="product-price">
                             $9.99
-                            </div>
-                            <div class="buy-now">
+                        </div>
+                        <div class="buy-now">
                             Buy now!
-                            </div>
-                            <div class="product-detail">
+                        </div>
+                        <div class="product-detail">
                             Detail
-                            </div>
+                        </div>
                     
                             <div class="how-many">
                             <div class="quantity-input">
@@ -291,64 +293,132 @@
             </ul>
         </footer>
     </div>
-    <script src="js/jquery.min.js"></script>    
-    <script>
 
+    <template id="cartItem">
+        <li>
+          <span class="productInCart"></span>
+            <span class="qty">
+              <span class="item-quantities">
+              </span>
+              <span class="item-name">
+              </span>
+            </span>
+            <div class="item-prices">
+            </div>
+            <a class="item-remove" href="#0"></a>
+        </li>
+    </template>
+  
+        
+
+
+    <script>
+      
         function toggle_panel(panel, background_layer) {
-                if (panel.hasClass('show-sidebar')) {
-                    panel.removeClass('show-sidebar');
-                    background_layer.removeClass('is-visible');
+                if (panel.classList.contains('show-sidebar')) {
+                    panel.classList.remove('show-sidebar');
+                    background_layer.classList.remove('is-visible');
                 } else {
-                    panel.addClass('show-sidebar');
-                    background_layer.addClass('is-visible');
+                    panel.classList.add('show-sidebar');
+                    background_layer.classList.add('is-visible');
                 }
         }
 
 
-        $(function(){
-        $("#cart-trigger").on('click', function () {
-            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
-        });
+        function ready() {
+            
+            document.getElementById("cart-trigger").addEventListener('click', function () {
+                toggle_panel(document.getElementById("cart-sidebar"), document.getElementById("shadow-layer"));
+            });
+
+            document.querySelector("#cart-sidebar .remove").addEventListener('click', function () {
+                toggle_panel(document.getElementById("cart-sidebar"), document.getElementById("shadow-layer"));
+                }
+            );
+
+            var hamburgerToggle = document.querySelector('#menu-toggle');
+    
+            hamburgerToggle.addEventListener('click', function(e){
+                e.preventDefault();
+                
+                document.querySelector('.flexmenu').classList.toggle('active');
+            });
+
+            let mega = document.querySelector('.mega-menu');
+
+            catalog.addEventListener('click', function () {
+                mega.classList.toggle('mega-active');
+            });
+            
+            document.querySelector('.mega-menu .close').addEventListener('click', function () {
+                mega.classList.remove('mega-active');
+            });
+
+            var buy = document.getElementsByClassName('buy-now');
+            
+            for (let i=0; i<buy.length; i++ ){
+                
+                buy[i].addEventListener('click', function (e) {
+                    //  console.log(e.target)
+                    e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'none';
+                    e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'none';
+                    e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'none';
+                    e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'block';
+                    e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '40%';
+                });
+ 
+           }
+           
+
+            var cancel = document.getElementsByClassName('cancel');
+            
+            for (let i=0; i<buy.length; i++ ){
+
+            cancel[i].addEventListener('click', function (e) {
+                e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'block';
+                e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'block';
+                e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'block';
+                e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'none';
+                e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '80%';
+            });
+            }
+            
+            var addcart = document.getElementsByClassName('add-to-cart');
+
+            for (let i=0; i<addcart.length; i++ ){
+                
+                addcart[i].addEventListener('click', function (e) {
+                var y = 180;
+                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
+                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-back').classList.add('back-is-visible');
+
+                console.log(this.parentNode.querySelectorAll(":scope > .how-many .quantity-input .quantity")[0].getAttribute('value'));
+
+                console.log(this.parentNode.parentNode.querySelectorAll(":scope > .product-name")[0].textContent);
+                
+                console.log(this.parentNode.querySelectorAll(":scope > .product-price")[0].textContent);
+                
+            });          
+            }
+
+        let plus = document.getElementsByClassName('plus');
+            for (let i=0;i<plus.length; i++) {
+                plus[i].addEventListener('click', function(e) {
+                let val = parseInt(e.target.previousElementSibling.getAttribute('value'));
+                e.target.previousElementSibling.setAttribute('value', val+1);
+            });
+        }
+        let minus = document.getElementsByClassName('minus');
+            for (let i=0;i<minus.length; i++) {
+                  minus[i].addEventListener('click', function(e) {
+                  let val = parseInt(e.target.nextElementSibling.getAttribute('value'));
+                  e.target.nextElementSibling.setAttribute('value', val-1);
+            });
+        }
+        }
+
+        document.addEventListener("DOMContentLoaded", ready);
         
-        $("#cart-sidebar .remove").on('click', function () {
-            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
-        });
-
-        $("#menu-toggle").on('click', function () {
-          $('.flexmenu').toggleClass('active');
-        });
-        
-        $("#catalog").on('click', function () {
-          $('.mega-menu').toggleClass('mega-active');
-        });
-        $(".mega-menu .close").on('click', function () {
-          $('.mega-menu').removeClass('mega-active');
-        }); 
-
-        $('.buy-now').on('click', function () {
-
-          $('.product .product-name').css('display', 'none');
-          $('.product .icon').css('display', 'none');
-          $('.product .buy-now').css('display','none');
-          $('.product .product-detail').css('display', 'block');
-          $('.product-menu').css('top', '40%');
-        });
-        $('.cancel').on('click', function () {
-          $('.product .product-name').css('display', 'block');
-          $('.product .icon').css('display', 'block');
-          $('.product .buy-now').css('display','block');
-          $('.product .product-detail').css('display', 'none');
-          $('.product-menu').css('top', '80%');
-        });
-
-        $('.add-to-cart').on('click', function () {
-            var y = 180;
-            $('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
-            $('.product-back').addClass('back-is-visible');
-        });
-
-      });
-
-      </script>
+    </script>
   </body>
 </html>
