@@ -293,7 +293,75 @@
             </ul>
         </footer>
     </div>
+
     
+    <template id="cartItem">      
+        <li>
+          <span class="productInCart"></span>
+            <span class="qty">
+              <span class="item-quantities">
+              </span>
+              <span class="item-name">
+              </span>
+            </span>
+            <div class="item-prices">
+            </div>
+            <a class="item-remove" href="#0"></a>
+        </li>
+    </template>
+
+    <template id="productItem">
+      <article class="grid-item">
+        <div class="product-wrapper">    
+          <div class="product">
+            <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
+            <div class="icon">
+              <div class="icon-background"></div>
+                <span class="shopping-cart">
+                  <i class="fas fa-shopping-cart fa-2x"></i>
+                </span>
+            </div>
+            <div class="product-picture">
+                <img src="" alt="Nice Cat" />
+            </div>
+            <span class="product-description"></span>
+            <div class="product-menu"  productId='1'>
+              <div class="product-price">
+                9.99
+              </div>
+              <div class="buy-now">
+                Buy now!
+              </div>
+              <div class="product-detail">
+                Detail
+              </div>
+              
+              <div class="how-many">
+                <div class="quantity-input">
+                  <input class="minus btn" type="button" value="-">
+                  <input class="input-text quantity text" value="3" size="4">
+                  <input class="plus btn" type="button" value="+">
+                </div>
+              </div>
+              <div class="cancel">
+                Cancel
+              </div>
+              <div class="add-to-cart">
+                Add to Cart!
+              </div>
+            </div>
+          </div>
+          <div class="product-back">
+            <span class="check">
+              <i class="fas fa-check fa-4x"></i>
+              <p>Success!</p>
+            </span>
+          </div>   
+        </div> 
+      </article> 
+    </template>
+
+
     <script>
       
         function toggle_panel(panel, background_layer) {
@@ -336,12 +404,29 @@
                 mega.classList.remove('mega-active');
             });
 
+            const product = {
+                id: 0,
+                name: "Cool Cat",
+                price: 177,
+                picture: "cat1.jpg",
+                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
+            };
+
+            const $template = document.getElementById("productItem").content;    
+
+            $template.querySelector('.product-menu').setAttribute('productId', product["id"]);
+            $template.querySelector('.product-name').textContent = product.name;
+            $template.querySelector('img').setAttribute('src', "images/"+ product.picture);
+            $template.querySelector('.product-price').textContent = product["price"];
+            $template.querySelector('.product-description').textContent = product["description"];
+
+            document.querySelector('.grid-layout').append($template.cloneNode(true));
+
             var buy = document.getElementsByClassName('buy-now');
             
             for (let i=0; i<buy.length; i++ ){
                 
                 buy[i].addEventListener('click', function (e) {
-                    //  console.log(e.target)
                     e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'none';
                     e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'none';
                     e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'none';
@@ -366,18 +451,27 @@
             }
             
             var addcart = document.getElementsByClassName('add-to-cart');
-
+            
+            const content = document.getElementById("cartItem").content;    
             for (let i=0; i<addcart.length; i++ ){
                 
                 addcart[i].addEventListener('click', function (e) {
                 var y = 180;
                 e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
                 e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-back').classList.add('back-is-visible');
-
-                createProduct();
                 
+                content.querySelector("span.item-quantities").textContent = this.parentNode.querySelectorAll(":scope > .how-many .quantity-input .quantity")[0].getAttribute('value');
+
+                content.querySelector("span.item-name").textContent = ' '+this.parentNode.parentNode.querySelectorAll(":scope > .product-name")[0].textContent; 
+
+                content.querySelector('.item-prices').textContent = this.parentNode.querySelectorAll(":scope > .product-price")[0].textContent;
+
+                document.querySelector('.cart-items').append(content.cloneNode(true));
+              
             });          
-            }
+        }
+
+
 
         let plus = document.getElementsByClassName('plus');
             for (let i=0;i<plus.length; i++) {
@@ -395,28 +489,8 @@
         }
         }
 
-      function createProduct(){
-
-        var article = document.createElement("article");
-        var div = document.createElement("div");
-
-        var p = document.createElement("p");
-        p.textContent = "Very Nice Cat";
-
-        div.appendChild(p);
-        article.setAttribute('class', "grid-item");
-
-        article.appendChild(div);
-        document.querySelector('.grid-layout').appendChild(article);
-      }
-
         document.addEventListener("DOMContentLoaded", ready);
         
-        
     </script>
-
-
-
-    
   </body>
 </html>

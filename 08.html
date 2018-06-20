@@ -31,104 +31,6 @@
     <h1>Hello, Cart!</h1>        
         
     <div class="grid-layout">
-      <article class="grid-item">
-        <div class="product-wrapper">    
-          <div class="product">
-            <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
-            <div class="icon">
-              <div class="icon-background"></div>
-                <span class="shopping-cart">
-                  <i class="fas fa-shopping-cart fa-2x"></i>
-                </span>
-              </div>
-              <div class="product-picture">
-                <img src="images/cat3.jpg" alt="Nice Cat" />
-              </div>
-              <div class="product-menu">
-                <div class="product-price">
-                  $9.99
-                </div>
-                <div class="buy-now">
-                  Buy now!
-                </div>
-                <div class="product-detail">
-                  Detail
-                </div>
-            
-                <div class="how-many">
-                  <div class="quantity-input">
-                    <input class="minus btn" type="button" value="-">
-                    <input class="input-text quantity text" value="3" size="4">
-                    <input class="plus btn" type="button" value="+">
-                  </div>
-                </div>
-                <div class="cancel">
-                  Cancel
-                </div>
-                <div class="add-to-cart">
-                  Add to Cart!
-                </div>
-              </div>
-          </div>
-          <div class="product-back">
-              <span class="check">
-                <i class="fas fa-check fa-4x"></i>
-                <p>Success!</p>
-              </span>
-            </div>   
-        </div> 
-        
-      </article>            
-      <article class="grid-item">
-          <div class="product-wrapper">    
-            <div class="product">
-              <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
-              <div class="icon">
-                <div class="icon-background"></div>
-                  <span class="shopping-cart">
-                    <i class="fas fa-shopping-cart fa-2x"></i>
-                  </span>
-                </div>
-                <div class="product-picture">
-                  <img src="images/cat3.jpg" alt="Nice Cat" />
-                </div>
-                <div class="product-menu">
-                  <div class="product-price">
-                    $9.99
-                  </div>
-                  <div class="buy-now">
-                    Buy now!
-                  </div>
-                  <div class="product-detail">
-                    Detail
-                  </div>
-              
-                  <div class="how-many">
-                    <div class="quantity-input">
-                      <input class="minus btn" type="button" value="-">
-                      <input class="input-text quantity text" value="3" size="4">
-                      <input class="plus btn" type="button" value="+">
-                    </div>
-                  </div>
-                  <div class="cancel">
-                    Cancel
-                  </div>
-                  <div class="add-to-cart">
-                    Add to Cart!
-                  </div>
-                </div>
-            </div>
-            <div class="product-back">
-                <span class="check">
-                  <i class="fas fa-check fa-4x"></i>
-                  <p>Success!</p>
-                </span>
-              </div>   
-          </div> 
-          
-        </article>            
-  
-    
     </div> 
     
     <!-- Footer Area Start -->
@@ -209,9 +111,88 @@
               <a class="item-remove" href="#0"></a>
           </li>
         </template>
+
+        <template id="productDetail">
+  
+            <figure class="item">
+                <h4 class="product-name">Cool Cat</h4>
+                <div class="image">
+                    <img class="slide" src=""/>
+                    <img class="slide" src="images/cat2.jpg" style="display:none;" />
+                    <img class="slide" src="images/cat3.jpg" style="display:none;" />
+                    <img class="slide" src="images/cat4.jpg" style="display:none;" />
+                </div>
+                
+                <div class="rating">
+                    <button class="prev">&#10094;&#10094;</button>
+                    <button class="next">&#10095;&#10095;</button>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <figcaption productId="">
+                    <p class="product-description">
+                        I'm just very selective about the reality I choose to accept.
+                    </p>
+                    <div class="price">
+                        <s class="old-price">$24.00</s><b class="product-price">$19.00</b>
+                    </div>
+                </figcaption>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </figure>
+        </template>
+
+        <template id="productItem">
+          <article class="grid-item">
+            <div class="product-wrapper">    
+              <div class="product">
+                <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
+                <div class="icon">
+                  <div class="icon-background"></div>
+                    <span class="shopping-cart">
+                      <i class="fas fa-shopping-cart fa-2x"></i>
+                    </span>
+                </div>
+                <div class="product-picture">
+                    <img src="" alt="Nice Cat" class="product-image" />
+                </div>
+                <span class="product-description"></span>
+                <div class="product-menu product-id"  productId=''>
+                  <div class="product-price">
+                    9.99
+                  </div>
+                  <div class="buy-now">
+                    Buy now!
+                  </div>
+                  <div class="product-detail">
+                    Detail
+                  </div>
+                  
+                  <div class="how-many">
+                    <div class="quantity-input">
+                      <input class="minus btn" type="button" value="-">
+                      <input class="input-text quantity text" value="3" size="4">
+                      <input class="plus btn" type="button" value="+">
+                    </div>
+                  </div>
+                  <div class="cancel">
+                    Cancel
+                  </div>
+                  <div class="add-to-cart">
+                    Add to Cart!
+                  </div>
+                </div>
+              </div>
+              <div class="product-back">
+                <span class="check">
+                  <i class="fas fa-check fa-4x"></i>
+                  <p>Success!</p>
+                </span>
+              </div>   
+            </div> 
+          </article> 
+        </template>
                
     <script src="js/jquery.min.js"></script>             
-    <!-- <script src="/js/main.js"></script> -->
+    <script src="js/data.js"></script>
 
     <script>
     function toggle_panel(panel, background_layer) {
@@ -222,6 +203,24 @@
                     panel.addClass('show-sidebar');
                     background_layer.addClass('is-visible');
                 }
+    }
+
+    function makeProductItem($template, product){
+        const keys = Object.keys(product);
+        keys.forEach(function(key) {
+            let selector = '.product-'+ key;
+            switch(key){
+                case 'id':
+                    $template.find(selector).attr('productId', product[key]);
+                    break;
+                case 'image':
+                    $template.find(selector).attr('src', "images/"+ product[key]);
+                    break;
+                default:
+                    $template.find(selector).text(product[key]);
+            }
+        });
+        return $template;
     }
 
 
@@ -244,6 +243,13 @@
         $(".mega-menu .close").on('click', function () {
           $('.mega-menu').removeClass('mega-active');
         }); 
+        
+        
+        for (var i=0; i<Object.keys(data).length; i++){
+            var $productTemplate = $($('#productItem').html());
+            $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
+        }
+
 
         $(".buy-now").each(function(index, element){
             $(element).on('click', function (e) {
@@ -266,7 +272,9 @@
                 $(e.target).parents('.product-menu').css('top', '80%');
             });
         });
-       
+        
+        const $template = $($('#cartItem').html());
+        
         $(".add-to-cart").each(function(index, element){
             $(element).on('click', function (e) {
                 var y = 180;    
@@ -274,26 +282,80 @@
                 .css('transform', 'rotateY(' + y + 'deg)');
                 $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
 
-                var $template = $($('#cartItem').html());
+                let template = $template.clone();
                 
-                $template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
         
-                $template.find(".item-quantities").after(' '+$(this).parents(".product").children(".product-name").text()); 
+                template.find(".item-quantities").after(' '+$(this).parents(".product").children(".product-name").text()); 
         
-                $template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
-                $(".cart-items").append($template);
+                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
+                $(".cart-items").append(template);
             });
         });
 
-       $(".plus").click(function() {
-       var val = parseInt($(this).prev().attr('value'));
-       $(this).prev().attr('value', val+1);
-       });
+        $(".plus").click(function() {
+            var val = parseInt($(this).prev().attr('value'));
+            $(this).prev().attr('value', val+1);
+        });
 
-      $(".minus").click(function() {
-       var val = parseInt($(this).next().attr('value'));
-       $(this).next().attr('value', val-1);
-       });
+        $(".minus").click(function() {
+            var val = parseInt($(this).next().attr('value'));
+            $(this).next().attr('value', val-1);
+        });
+
+        $(".product-detail").each(function(index, element){
+            $(element).on('click', function () {
+                
+                var $template = $($('#productDetail').html());
+                $template.find('.product-price').text($(this).parents(".product").find(".product-price").text());
+                $template.find('.product-name').text($(this).parents(".product").find(".product-name").text());
+
+                $template.find('img').eq(0).attr('src', 'images/cat3.jpg');
+                
+
+                $(".grid-layout").empty();
+
+                $(".grid-layout").append($template);
+
+                let slideIndex = 1;
+
+                const prev = $(".prev");
+                const next = $(".next");
+
+                function showSlide(n) {
+                    let i;
+                    let x = $(".slide");
+                    if (n > x.length) {
+                        slideIndex = 1
+                    }    
+                    if (n < 1) {
+                        slideIndex = x.length
+                    }
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";  
+                    }
+
+                    x[slideIndex-1].style.display = "block";  
+                }
+
+                showSlide(slideIndex);
+
+                function nextPrev(n) {
+                    showSlide(slideIndex += n);
+                }
+
+                next.click(function () {
+                    nextPrev(1);
+                });
+
+                prev.click(function () {
+                    nextPrev(-1);
+                });
+
+            });
+        });
+
+
 
     });
 
