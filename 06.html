@@ -31,104 +31,6 @@
     <h1>Hello, Cart!</h1>        
         
     <div class="grid-layout">
-      <article class="grid-item">
-        <div class="product-wrapper">    
-          <div class="product">
-            <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
-            <div class="icon">
-              <div class="icon-background"></div>
-                <span class="shopping-cart">
-                  <i class="fas fa-shopping-cart fa-2x"></i>
-                </span>
-              </div>
-              <div class="product-picture">
-                <img src="images/cat3.jpg" alt="Nice Cat" />
-              </div>
-              <div class="product-menu">
-                <div class="product-price">
-                  $9.99
-                </div>
-                <div class="buy-now">
-                  Buy now!
-                </div>
-                <div class="product-detail">
-                  Detail
-                </div>
-            
-                <div class="how-many">
-                  <div class="quantity-input">
-                    <input class="minus btn" type="button" value="-">
-                    <input class="input-text quantity text" value="3" size="4">
-                    <input class="plus btn" type="button" value="+">
-                  </div>
-                </div>
-                <div class="cancel">
-                  Cancel
-                </div>
-                <div class="add-to-cart">
-                  Add to Cart!
-                </div>
-              </div>
-          </div>
-          <div class="product-back">
-              <span class="check">
-                <i class="fas fa-check fa-4x"></i>
-                <p>Success!</p>
-              </span>
-            </div>   
-        </div> 
-        
-      </article>            
-      <article class="grid-item">
-          <div class="product-wrapper">    
-            <div class="product">
-              <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
-              <div class="icon">
-                <div class="icon-background"></div>
-                  <span class="shopping-cart">
-                    <i class="fas fa-shopping-cart fa-2x"></i>
-                  </span>
-                </div>
-                <div class="product-picture">
-                  <img src="images/cat3.jpg" alt="Nice Cat" />
-                </div>
-                <div class="product-menu">
-                  <div class="product-price">
-                    $9.99
-                  </div>
-                  <div class="buy-now">
-                    Buy now!
-                  </div>
-                  <div class="product-detail">
-                    Detail
-                  </div>
-              
-                  <div class="how-many">
-                    <div class="quantity-input">
-                      <input class="minus btn" type="button" value="-">
-                      <input class="input-text quantity text" value="3" size="4">
-                      <input class="plus btn" type="button" value="+">
-                    </div>
-                  </div>
-                  <div class="cancel">
-                    Cancel
-                  </div>
-                  <div class="add-to-cart">
-                    Add to Cart!
-                  </div>
-                </div>
-            </div>
-            <div class="product-back">
-                <span class="check">
-                  <i class="fas fa-check fa-4x"></i>
-                  <p>Success!</p>
-                </span>
-              </div>   
-          </div> 
-          
-        </article>            
-  
-    
     </div> 
     
     <!-- Footer Area Start -->
@@ -144,8 +46,8 @@
             <!-- cart-items start-->
             <ul class="cart-items">
                 <li>
-                    <span class="item-quantity">1x</span> <span class="item-name">Product Name</span>
-                    <div class="item-price">$9.99</div>
+                    <span class="item-quantity"></span> <span class="item-name"></span>
+                    <div class="item-price"></div>
                     <a href="#0" class="item-remove"></a>
                 </li>
             </ul> 
@@ -196,18 +98,18 @@
         </div>
 
         <template id="cartItem">
-          <li>
-            <span class="productInCart"></span>
-              <span class="qty">
-                <span class="item-quantities">
-                </span>
-                <span class="item-name">
-                </span>
-              </span>
-              <div class="item-prices">
-              </div>
-              <a class="item-remove" href="#0"></a>
-          </li>
+                <li>
+                  <span class="productInCart"></span>
+                    <span class="qty">
+                      <span class="item-quantities">
+                      </span>
+                    </span>
+                    <span class="item-name">
+                    </span>
+                    <span class="item-prices">
+                    </span>
+                    <a class="item-remove" href="#0"><i class="fas fa-times"></i></a>
+                </li>
         </template>
 
         <template id="productDetail">
@@ -238,57 +140,56 @@
             </figure>
         </template>
 
-    <template id="productItem">
-        <article class="grid-item">
-          <div class="product-wrapper">    
-            <div class="product">
-              <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
-              <div class="icon">
-                <div class="icon-background"></div>
-                  <span class="shopping-cart">
-                    <i class="fas fa-shopping-cart fa-2x"></i>
-                  </span>
-              </div>
-              <div class="product-picture">
-                  <img src="" alt="Nice Cat" />
-              </div>
-              <span class="product-description"></span>
-              <div class="product-menu"  productId='1'>
-                <div class="product-price">
-                  9.99
+        <template id="productItem">
+          <article class="grid-item">
+            <div class="product-wrapper">    
+              <div class="product">
+                <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
+                <div class="icon">
+                  <div class="icon-background"></div>
+                    <span class="shopping-cart">
+                      <i class="fas fa-shopping-cart fa-2x"></i>
+                    </span>
                 </div>
-                <div class="buy-now">
-                  Buy now!
+                <div class="product-picture">
+                    <img src="" alt="Nice Cat" class="product-image" />
                 </div>
-                <div class="product-detail">
-                  Detail
-                </div>
-                
-                <div class="how-many">
-                  <div class="quantity-input">
-                    <input class="minus btn" type="button" value="-">
-                    <input class="input-text quantity text" value="3" size="4">
-                    <input class="plus btn" type="button" value="+">
+                <span class="product-description"></span>
+                <div class="product-menu product-id"  productId=''>
+                  <div class="product-price">
+                    9.99
+                  </div>
+                  <div class="buy-now">
+                    Buy now!
+                  </div>
+                  <div class="product-detail">
+                    Detail
+                  </div>
+                  
+                  <div class="how-many">
+                    <div class="quantity-input">
+                      <input class="minus btn" type="button" value="-">
+                      <input class="input-text quantity text" value="3" size="4">
+                      <input class="plus btn" type="button" value="+">
+                    </div>
+                  </div>
+                  <div class="cancel">
+                    Cancel
+                  </div>
+                  <div class="add-to-cart">
+                    Add to Cart!
                   </div>
                 </div>
-                <div class="cancel">
-                  Cancel
-                </div>
-                <div class="add-to-cart">
-                  Add to Cart!
-                </div>
               </div>
-            </div>
-            <div class="product-back">
-              <span class="check">
-                <i class="fas fa-check fa-4x"></i>
-                <p>Success!</p>
-              </span>
-            </div>   
-          </div> 
-        </article> 
-      </template>
-          
+              <div class="product-back">
+                <span class="check">
+                  <i class="fas fa-check fa-4x"></i>
+                  <p>Success!</p>
+                </span>
+              </div>   
+            </div> 
+          </article> 
+        </template>
                
     <script src="js/jquery.min.js"></script>             
     <script src="js/data.js"></script>
@@ -305,12 +206,21 @@
     }
 
     function makeProductItem($template, product){
-            $template.find('.product-menu').attr('productId', product["id"]);
-            $template.find('.product-name').text(product.name);
-            $template.find('img').attr('src', "images/"+ product.image);
-            $template.find('.product-price').text(product["price"]);
-            $template.find('.product-description').text( product["description"]);
-            return $template;
+        const keys = Object.keys(product);
+        keys.forEach(function(key) {
+            let selector = '.product-'+ key;
+            switch(key){
+                case 'id':
+                    $template.find(selector).attr('productId', product[key]);
+                    break;
+                case 'image':
+                    $template.find(selector).attr('src', "images/"+ product[key]);
+                    break;
+                default:
+                    $template.find(selector).text(product[key]);
+            }
+        });
+        return $template;
     }
 
 
@@ -340,49 +250,136 @@
             $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
         }
 
-
         $(".buy-now").each(function(index, element){
             $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name')
-                .css('display', 'none');
-                $(e.target).parents('.product').find('.icon').css('display', 'none');
-                $(e.target).parents('.product').find('.buy-now').css('display','none');
-                $(e.target).parents('.product').find(' .product-detail').css('display', 'block');
+                $(e.target).parents('.product').find('.product-name').slideUp();
+                $(e.target).parents('.product').find('.icon').fadeOut("1000");
+                $(e.target).parents('.product').find('.buy-now').slideUp();
+                $(e.target).parents('.product').find(' .product-detail').slideDown("fast");
                 $(e.target).parents('.product-menu').css('top', '40%');
             });
         });
         
         $(".cancel").each(function(index, element){
             $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name')
-                .css('display', 'block');
-                $(e.target).parents('.product').find('.icon').css('display', 'block');
-                $(e.target).parents('.product').find('.buy-now').css('display','block');
-                $(e.target).parents('.product').find(' .product-detail').css('display', 'none');
+                $(e.target).parents('.product').find('.product-name').slideToggle();
+                $(e.target).parents('.product').find('.icon').fadeIn(3000);
+                $(e.target).parents('.product').find('.buy-now').slideToggle("fast", "swing");
+                $(e.target).parents('.product').find(' .product-detail').slideToggle("slow", "linear");
                 $(e.target).parents('.product-menu').css('top', '80%');
             });
         });
-        
+                
         const $template = $($('#cartItem').html());
         
+
         $(".add-to-cart").each(function(index, element){
+            $(element).on('click', function (e) {
+                let template = $template.clone();
+                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+                template.find("span.item-name").text($(this).parents(".product").children(".product-name").text()); 
+                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
+                template.find(".item-remove").on('click', function() {$(this).parent().remove();});
+                $(".cart-items").append(template);
+
+                // Поиск элемента с заданным номером
+
+                var imgToDrag = $(e.target).parents('.product').find("img").eq(0);
+
+                if (imgToDrag) {
+                   var imgClone = imgToDrag.clone()
+                        .offset({
+                            top: imgToDrag.offset().top,
+                            left: imgToDrag.offset().left
+                        })
+                        .css({
+                            'opacity': '0.5',
+                            'position': 'absolute',
+                            'height': '150px',
+                            'width': '150px',
+                            'z-index': '100'
+                        })
+                        .appendTo($('body'))
+                            .animate({
+                            'top': $('#cart-trigger').offset().top + 10,
+                                'left': $('#cart-trigger').offset().left + 10,
+                                'width': 75,
+                                'height': 75
+                        }, 1000);
+                }
+
+                
+                var y = 180;    
+                $(e.target).parents('.product-wrapper')
+                .css('transform', 'rotateY(' + y + 'deg)');
+                $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
+                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                    $(this).css({
+                        'transform': 'rotateY(0deg)'
+                    }).dequeue();
+                    $(e.target).parents('.product').find('p').slideDown();
+                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                    $(e.target).parents('.product').find('.product-detail').toggle();
+                    $(e.target).parents('.product').find('.buy-now').toggle();
+                    $(e.target).parents('.product').find('.icon').toggle();
+                });
+            });
+
+        });
+
+        /*
+                $(".add-to-cart").each(function(index, element){
             $(element).on('click', function (e) {
                 var y = 180;    
                 $(e.target).parents('.product-wrapper')
                 .css('transform', 'rotateY(' + y + 'deg)');
                 $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-
-                let template = $template.clone();
+                var imgtodrag = $(e.target).parents('.product').find("img").eq(0);
+        
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone()
+                .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+            })
+                .css({
+                'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '150px',
+                    'width': '150px',
+                    'z-index': '100'
+            })
+        
+            .appendTo($('body'))
+                .animate({
+                'top': $('.shopping-cart').offset().top + 10,
+                    'left': $('.shopping-cart').offset().left + 10,
+                    'width': 75,
+                    'height': 75
+            }, 1000);
+        
+        }
+        // imgclone.animate({
+        //     'width': 0,
+        //         'height': 0
+        // }, function () {
+        //     $(this).detach()
+        // });  
+                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                    $(this).css({
+                        'transform': 'rotateY(0deg)'
+                    }).dequeue();
+                    $(e.target).parents('.product').find('p').slideDown();
+                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                    $(e.target).parents('.product').find('.product-detail').toggle();
+                    $(e.target).parents('.product').find('.buy-now').toggle();
+                    $(e.target).parents('.product').find('.icon').toggle();
+                });
                 
-                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
-        
-                template.find(".item-quantities").after(' '+$(this).parents(".product").children(".product-name").text()); 
-        
-                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
-                $(".cart-items").append(template);
             });
         });
-
+        */ 
+        
         $(".plus").click(function() {
             var val = parseInt($(this).prev().attr('value'));
             $(this).prev().attr('value', val+1);

@@ -28,292 +28,434 @@
         </ul>
       </nav>
     </nav>
-    <h1>Hello, Cats!</h1>        
+    <h1>Hello, Cart!</h1>        
         
     <div class="grid-layout">
-    </div>            
+    </div> 
     
     <!-- Footer Area Start -->
     <footer id="footer">
-    </footer>
-    <!-- Footer Area Stop -->
-    <div id="shadow-layer" class="shadow-layer"></div>
-    <!-- Aside Area Start -->
-    <aside id="cart-sidebar" class="cart">
-        <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
-        
-        <h2>Cart</h2>
-        <!-- cart-items start-->
-        <ul class="cart-items">
-            <li>
-                <span class="item-quantity">1x</span> <span class="item-name">Product Name</span>
-                <div class="item-price">$9.99</div>
-                <a href="#0" class="item-remove"></a>
-            </li>
-        </ul> 
-        <!-- cart-items end -->
-    
-        <div class="cart-total">
-            <p>Total <span>$39.96</span></p>
-        </div> <!-- cart-total -->
-    
-        <a href="#" class="checkout-button">Checkout</a>
-    </aside> <!-- cart end -->
-    <!-- Aside Area end -->
-
-
-    <div class="mega-menu">
-        <div class="mega-menu-top">
-            <div class="mega-search">
-                <label for="mega-search">Search</label>
-                <input type="search" id="mega-search" placeholder="Search" />
-            </div>
-            <div class="close">
-                <span>&#10006;</span> 
-            </div>
-        </div>
-        <h3>Catalog</h3>
-        <ul class="nav themes">
-            <li><a href="#"> Mice</a></li>
-            <li><a href="#"> Cats</a></li>
-            <li><a href="#"> Dogs</a></li>
-            <li><a href="#"> Rabbits</a></li>
-            <li><a href="#"> Crocodiles</a></li>
-            <li><a href="#"> Chicks</a></li>
-            <li><a href="#"> Dinosaurs</a></li>
-            <li><a href="#"> Skunks</a></li>
-            <li><a href="#"> Rats</a></li>
-            <li><a href="#"> Crows</a></li>
-        </ul>
-        <footer>
-            <div class="logo-footer">  
-              <img src="images/logo.png">
-            </div>
-            <ul class="nav footer">
-                <li>Contact Us</li>
-                <li>About Us</li>
-                <li>Privacy Policy</li>
-            </ul>
         </footer>
-    </div>
-
+        <!-- Footer Area Stop -->
+        <div id="shadow-layer" class="shadow-layer"></div>
+        <!-- Aside Area Start -->
+        <aside id="cart-sidebar" class="cart">
+            <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
+            
+            <h2>Cart</h2>
+            <!-- cart-items start-->
+            <ul class="cart-items">
+                <li>
+                    <span class="item-quantity"></span> <span class="item-name"></span>
+                    <div class="item-price"></div>
+                    <a href="#0" class="item-remove"></a>
+                </li>
+            </ul> 
+            <!-- cart-items end -->
+        
+            <div class="cart-total">
+                <p>Total <span>$39.96</span></p>
+            </div> <!-- cart-total -->
+        
+            <a href="#" class="checkout-button">Checkout</a>
+        </aside> <!-- cart end -->
+        <!-- Aside Area end -->
     
-    <template id="cartItem">      
-        <li>
-          <span class="productInCart"></span>
-            <span class="qty">
-              <span class="item-quantities">
-              </span>
-              <span class="item-name">
-              </span>
-            </span>
-            <div class="item-prices">
+    
+        <div class="mega-menu">
+            <div class="mega-menu-top">
+                <div class="mega-search">
+                    <label for="mega-search">Search</label>
+                    <input type="search" id="mega-search" placeholder="Search" />
+                </div>
+                <div class="close">
+                    <span>&#10006;</span> 
+                </div>
             </div>
-            <a class="item-remove" href="#0"></a>
-        </li>
-    </template>
+            <h3>Catalog</h3>
+            <ul class="nav themes">
+                <li><a href="#"> Mice</a></li>
+                <li><a href="#"> Cats</a></li>
+                <li><a href="#"> Dogs</a></li>
+                <li><a href="#"> Rabbits</a></li>
+                <li><a href="#"> Crocodiles</a></li>
+                <li><a href="#"> Chicks</a></li>
+                <li><a href="#"> Dinosaurs</a></li>
+                <li><a href="#"> Skunks</a></li>
+                <li><a href="#"> Rats</a></li>
+                <li><a href="#"> Crows</a></li>
+            </ul>
+            <footer>
+                <div class="logo-footer">  
+                  <img src="images/logo.png">
+                </div>
+                <ul class="nav footer">
+                    <li>Contact Us</li>
+                    <li>About Us</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </footer>
+        </div>
 
-    <template id="productItem">
-      <article class="grid-item">
-        <div class="product-wrapper">    
-          <div class="product">
-            <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
-            <div class="icon">
-              <div class="icon-background"></div>
-                <span class="shopping-cart">
-                  <i class="fas fa-shopping-cart fa-2x"></i>
-                </span>
-            </div>
-            <div class="product-picture">
-                <img src="" alt="Nice Cat" class="product-image" />
-            </div>
-            <span class="product-description"></span>
-            <div class="product-menu product-id"  productId=''>
-              <div class="product-price">
-                9.99
-              </div>
-              <div class="buy-now">
-                Buy now!
-              </div>
-              <div class="product-detail">
-                Detail
-              </div>
-              
-              <div class="how-many">
-                <div class="quantity-input">
-                  <input class="minus btn" type="button" value="-">
-                  <input class="input-text quantity text" value="3" size="4">
-                  <input class="plus btn" type="button" value="+">
+        <template id="cartItem">
+                <li>
+                  <span class="productInCart"></span>
+                    <span class="qty">
+                      <span class="item-quantities">
+                      </span>
+                    </span>
+                    <span class="item-name">
+                    </span>
+                    <span class="item-prices">
+                    </span>
+                    <a class="item-remove" href="#0"><i class="fas fa-times"></i></a>
+                </li>
+        </template>
+
+        <template id="productDetail">
+  
+            <figure class="item">
+                <h4 class="product-name">Cool Cat</h4>
+                <div class="image">
+                    <img class="slide" src=""/>
+                    <img class="slide" src="images/cat2.jpg" style="display:none;" />
+                    <img class="slide" src="images/cat3.jpg" style="display:none;" />
+                    <img class="slide" src="images/cat4.jpg" style="display:none;" />
+                </div>
+                
+                <div class="rating">
+                    <button class="prev">&#10094;&#10094;</button>
+                    <button class="next">&#10095;&#10095;</button>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <figcaption productId="">
+                    <p class="product-description">
+                        I'm just very selective about the reality I choose to accept.
+                    </p>
+                    <div class="price">
+                        <s class="old-price">$24.00</s><b class="product-price">$19.00</b>
+                    </div>
+                </figcaption>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </figure>
+        </template>
+
+        <template id="productItem">
+          <article class="grid-item">
+            <div class="product-wrapper">    
+              <div class="product">
+                <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
+                <div class="icon">
+                  <div class="icon-background"></div>
+                    <span class="shopping-cart">
+                      <i class="fas fa-shopping-cart fa-2x"></i>
+                    </span>
+                </div>
+                <div class="product-picture">
+                    <img src="" alt="Nice Cat" class="product-image" />
+                </div>
+                <span class="product-description"></span>
+                <div class="product-menu product-id"  productId=''>
+                  <div class="product-price">
+                    9.99
+                  </div>
+                  <div class="buy-now">
+                    Buy now!
+                  </div>
+                  <div class="product-detail">
+                    Detail
+                  </div>
+                  
+                  <div class="how-many">
+                    <div class="quantity-input">
+                      <input class="minus btn" type="button" value="-">
+                      <input class="input-text quantity text" value="3" size="4">
+                      <input class="plus btn" type="button" value="+">
+                    </div>
+                  </div>
+                  <div class="cancel">
+                    Cancel
+                  </div>
+                  <div class="add-to-cart">
+                    Add to Cart!
+                  </div>
                 </div>
               </div>
-              <div class="cancel">
-                Cancel
-              </div>
-              <div class="add-to-cart">
-                Add to Cart!
-              </div>
-            </div>
-          </div>
-          <div class="product-back">
-            <span class="check">
-              <i class="fas fa-check fa-4x"></i>
-              <p>Success!</p>
-            </span>
-          </div>   
-        </div> 
-      </article> 
-    </template>
-
+              <div class="product-back">
+                <span class="check">
+                  <i class="fas fa-check fa-4x"></i>
+                  <p>Success!</p>
+                </span>
+              </div>   
+            </div> 
+          </article> 
+        </template>
+               
+    <script src="js/jquery.min.js"></script>             
     <script src="js/data.js"></script>
-    <script>
 
-      
+    <script>
     function toggle_panel(panel, background_layer) {
-        if (panel.classList.contains('show-sidebar')) {
-            panel.classList.remove('show-sidebar');
-            background_layer.classList.remove('is-visible');
-        } else {
-            panel.classList.add('show-sidebar');
-            background_layer.classList.add('is-visible');
-        }
+                if (panel.hasClass('show-sidebar')) {
+                    panel.removeClass('show-sidebar');
+                    background_layer.removeClass('is-visible');
+                } else {
+                    panel.addClass('show-sidebar');
+                    background_layer.addClass('is-visible');
+                }
     }
 
     function makeProductItem($template, product){
         const keys = Object.keys(product);
-        // console.log(key + ': ' + product[key]);
-
         keys.forEach(function(key) {
             let selector = '.product-'+ key;
             switch(key){
                 case 'id':
-                    $template.querySelector(selector).setAttribute('productId', product[key]);
+                    $template.find(selector).attr('productId', product[key]);
                     break;
                 case 'image':
-                    $template.querySelector(selector).setAttribute('src', "images/"+ product[key]);
+                    $template.find(selector).attr('src', "images/"+ product[key]);
                     break;
                 default:
-                    $template.querySelector(selector).textContent = product[key];
+                    $template.find(selector).text(product[key]);
             }
         });
         return $template;
     }
 
-    function ready() {
-            
-        document.getElementById("cart-trigger").addEventListener('click', function () {
-                toggle_panel(document.getElementById("cart-sidebar"), document.getElementById("shadow-layer"));
-        });
 
-        document.querySelector("#cart-sidebar .remove").addEventListener('click', function () {
-                toggle_panel(document.getElementById("cart-sidebar"), document.getElementById("shadow-layer"));
-                }
-        );
-
-        var hamburgerToggle = document.querySelector('#menu-toggle');
-    
-        hamburgerToggle.addEventListener('click', function(e){
-                e.preventDefault();
-                
-                document.querySelector('.flexmenu').classList.toggle('active');
+    $(function(){
+        $("#cart-trigger").on('click', function () {
+            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
         });
-
-        let mega = document.querySelector('.mega-menu');
-
-        catalog.addEventListener('click', function () {
-                mega.classList.toggle('mega-active');
-        });
-            
-        document.querySelector('.mega-menu .close').addEventListener('click', function () {
-                mega.classList.remove('mega-active');
-        });
-       
         
-        const $productTemplate = document.getElementById("productItem").content;
-        
-        const keys = Object.keys(data[1]);
-        console.log(keys);
-
-        // После того, как желаемый массив был получен, его можно перебрать, например, с помощью метода forEach:
-
-        keys.forEach(function(key) {
-            console.log(key + ': ' + data[1][key]);
+        $("#cart-sidebar .remove").on('click', function () {
+            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
         });
 
-
+        $("#menu-toggle").on('click', function () {
+          $('.flexmenu').toggleClass('active');
+        });
+        
+        $("#catalog").on('click', function () {
+          $('.mega-menu').toggleClass('mega-active');
+        });
+        $(".mega-menu .close").on('click', function () {
+          $('.mega-menu').removeClass('mega-active');
+        }); 
+        
+        
         for (var i=0; i<Object.keys(data).length; i++){
-            document.querySelector('.grid-layout').append(makeProductItem($productTemplate, data[i]).cloneNode(true));
+            var $productTemplate = $($('#productItem').html());
+            $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
         }
 
-
-            var buy = document.getElementsByClassName('buy-now');
-            
-            for (let i=0; i<buy.length; i++ ){
-                
-                buy[i].addEventListener('click', function (e) {
-                    e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'none';
-                    e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'none';
-                    e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'none';
-                    e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'block';
-                    e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '40%';
-                });
- 
-           }
-           
-
-            var cancel = document.getElementsByClassName('cancel');
-            
-            for (let i=0; i<buy.length; i++ ){
-
-            cancel[i].addEventListener('click', function (e) {
-                e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'block';
-                e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'block';
-                e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'block';
-                e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'none';
-                e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '80%';
+        $(".buy-now").each(function(index, element){
+            $(element).on('click', function (e) {
+                $(e.target).parents('.product').find('.product-name').slideUp();
+                $(e.target).parents('.product').find('.icon').fadeOut("1000");
+                $(e.target).parents('.product').find('.buy-now').slideUp();
+                $(e.target).parents('.product').find(' .product-detail').slideDown("fast");
+                $(e.target).parents('.product-menu').css('top', '40%');
             });
-            }
-            
-            var addcart = document.getElementsByClassName('add-to-cart');
-            
-            const content = document.getElementById("cartItem").content;    
-            for (let i=0; i<addcart.length; i++ ){
-                
-                addcart[i].addEventListener('click', function (e) {
-                var y = 180;
-                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
-                e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-back').classList.add('back-is-visible');
-                
-                content.querySelector("span.item-quantities").textContent = this.parentNode.querySelectorAll(":scope > .how-many .quantity-input .quantity")[0].getAttribute('value');
-
-                content.querySelector("span.item-name").textContent = ' '+this.parentNode.parentNode.querySelectorAll(":scope > .product-name")[0].textContent; 
-
-                content.querySelector('.item-prices').textContent = this.parentNode.querySelectorAll(":scope > .product-price")[0].textContent;
-
-                document.querySelector('.cart-items').append(content.cloneNode(true));
-              
-            });          
-        }
-
-
-
-        let plus = document.getElementsByClassName('plus');
-            for (let i=0;i<plus.length; i++) {
-                plus[i].addEventListener('click', function(e) {
-                let val = parseInt(e.target.previousElementSibling.getAttribute('value'));
-                e.target.previousElementSibling.setAttribute('value', val+1);
-            });
-        }
-        let minus = document.getElementsByClassName('minus');
-            for (let i=0;i<minus.length; i++) {
-                  minus[i].addEventListener('click', function(e) {
-                  let val = parseInt(e.target.nextElementSibling.getAttribute('value'));
-                  e.target.nextElementSibling.setAttribute('value', val-1);
-            });
-        }
-        }
-
-        document.addEventListener("DOMContentLoaded", ready);
+        });
         
+        $(".cancel").each(function(index, element){
+            $(element).on('click', function (e) {
+                $(e.target).parents('.product').find('.product-name').slideToggle();
+                $(e.target).parents('.product').find('.icon').fadeIn(3000);
+                $(e.target).parents('.product').find('.buy-now').slideToggle("fast", "swing");
+                $(e.target).parents('.product').find(' .product-detail').slideToggle("slow", "linear");
+                $(e.target).parents('.product-menu').css('top', '80%');
+            });
+        });
+                
+        const $template = $($('#cartItem').html());
+        
+
+        $(".add-to-cart").each(function(index, element){
+            $(element).on('click', function (e) {
+                let template = $template.clone();
+                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+                template.find("span.item-name").text($(this).parents(".product").children(".product-name").text()); 
+                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
+                template.find(".item-remove").on('click', function() {$(this).parent().remove();});
+                $(".cart-items").append(template);
+
+                // Поиск элемента с заданным номером
+
+                var imgToDrag = $(e.target).parents('.product').find("img").eq(0);
+
+                if (imgToDrag) {
+                    var imgClone = imgToDrag.clone()
+                        .offset({
+                            top: imgToDrag.offset().top,
+                            left: imgToDrag.offset().left
+                        })
+                        .css({
+                            'opacity': '0.5',
+                            'position': 'absolute',
+                            'height': '150px',
+                            'width': '150px',
+                            'z-index': '100'
+                        })
+                        .appendTo($('body'))
+                            .animate({
+                            'top': $('#cart-trigger').offset().top + 10,
+                                'left': $('#cart-trigger').offset().left + 10,
+                                'width': 75,
+                                'height': 75
+                        }, 1000);
+            
+                    imgClone.animate({
+                        'width': 0,
+                            'height': 0
+                    }, function () {
+                        $(this).detach()
+                    });  
+                }
+    
+                var y = 180;    
+                $(e.target).parents('.product-wrapper')
+                .css('transform', 'rotateY(' + y + 'deg)');
+                $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
+                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                    $(this).css({
+                        'transform': 'rotateY(0deg)'
+                    }).dequeue();
+                    $(e.target).parents('.product').find('p').slideDown();
+                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                    $(e.target).parents('.product').find('.product-detail').toggle();
+                    $(e.target).parents('.product').find('.buy-now').toggle();
+                    $(e.target).parents('.product').find('.icon').toggle();
+                });
+            });
+
+        });
+
+        /*
+                $(".add-to-cart").each(function(index, element){
+            $(element).on('click', function (e) {
+                var y = 180;    
+                $(e.target).parents('.product-wrapper')
+                .css('transform', 'rotateY(' + y + 'deg)');
+                $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
+                var imgtodrag = $(e.target).parents('.product').find("img").eq(0);
+        
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone()
+                .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+            })
+                .css({
+                'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '150px',
+                    'width': '150px',
+                    'z-index': '100'
+            })
+        
+            .appendTo($('body'))
+                .animate({
+                'top': $('.shopping-cart').offset().top + 10,
+                    'left': $('.shopping-cart').offset().left + 10,
+                    'width': 75,
+                    'height': 75
+            }, 1000);
+        
+        }
+        // imgclone.animate({
+        //     'width': 0,
+        //         'height': 0
+        // }, function () {
+        //     $(this).detach()
+        // });  
+                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                    $(this).css({
+                        'transform': 'rotateY(0deg)'
+                    }).dequeue();
+                    $(e.target).parents('.product').find('p').slideDown();
+                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                    $(e.target).parents('.product').find('.product-detail').toggle();
+                    $(e.target).parents('.product').find('.buy-now').toggle();
+                    $(e.target).parents('.product').find('.icon').toggle();
+                });
+                
+            });
+        });
+        */ 
+        
+        $(".plus").click(function() {
+            var val = parseInt($(this).prev().attr('value'));
+            $(this).prev().attr('value', val+1);
+        });
+
+        $(".minus").click(function() {
+            var val = parseInt($(this).next().attr('value'));
+            $(this).next().attr('value', val-1);
+        });
+
+        $(".product-detail").each(function(index, element){
+            $(element).on('click', function () {
+                
+                var $template = $($('#productDetail').html());
+                $template.find('.product-price').text($(this).parents(".product").find(".product-price").text());
+                $template.find('.product-name').text($(this).parents(".product").find(".product-name").text());
+
+                $template.find('img').eq(0).attr('src', 'images/cat3.jpg');
+                
+
+                $(".grid-layout").empty();
+
+                $(".grid-layout").append($template);
+
+                let slideIndex = 1;
+
+                const prev = $(".prev");
+                const next = $(".next");
+
+                function showSlide(n) {
+                    let i;
+                    let x = $(".slide");
+                    if (n > x.length) {
+                        slideIndex = 1
+                    }    
+                    if (n < 1) {
+                        slideIndex = x.length
+                    }
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";  
+                    }
+
+                    x[slideIndex-1].style.display = "block";  
+                }
+
+                showSlide(slideIndex);
+
+                function nextPrev(n) {
+                    showSlide(slideIndex += n);
+                }
+
+                next.click(function () {
+                    nextPrev(1);
+                });
+
+                prev.click(function () {
+                    nextPrev(-1);
+                });
+
+            });
+        });
+
+
+
+    });
+
+
     </script>
+
+  
+    
   </body>
 </html>

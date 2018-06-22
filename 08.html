@@ -42,12 +42,12 @@
         <aside id="cart-sidebar" class="cart">
             <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
             
-            <h2>Cart</h2>
+            <h2 class="cartHeader">Cart</h2>
             <!-- cart-items start-->
             <ul class="cart-items">
                 <li>
-                    <span class="item-quantity">1x</span> <span class="item-name">Product Name</span>
-                    <div class="item-price">$9.99</div>
+                    <span class="item-quantity"></span> <span class="item-name"></span>
+                    <div class="item-price"></div>
                     <a href="#0" class="item-remove"></a>
                 </li>
             </ul> 
@@ -98,18 +98,18 @@
         </div>
 
         <template id="cartItem">
-          <li>
-            <span class="productInCart"></span>
-              <span class="qty">
-                <span class="item-quantities">
-                </span>
-                <span class="item-name">
-                </span>
-              </span>
-              <div class="item-prices">
-              </div>
-              <a class="item-remove" href="#0"></a>
-          </li>
+                <li>
+                  <span class="productInCart"></span>
+                    <span class="qty">
+                      <span class="item-quantities">
+                      </span>
+                    </span>
+                    <span class="item-name">
+                    </span>
+                    <span class="item-prices">
+                    </span>
+                    <a class="item-remove" href="#0"><i class="fas fa-times"></i></a>
+                </li>
         </template>
 
         <template id="productDetail">
@@ -233,6 +233,31 @@
             toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
         });
 
+        var box = [],
+            months = [ "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Верпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+            weekday = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'];
+        
+        var date = new Date();
+        box.push({"weekday":weekday[date.getDay()-1]});
+        box.push({"day":date.getDate()});
+        box.push({"month":months[date.getMonth()]});
+        box.push({"year":date.getFullYear()});
+        
+        var span = document.createElement('span'),
+            time = document.createElement('time');
+        for (var i=0; i<box.length; i++){
+            var sp = span.cloneNode(false);
+                for (var k in box[i]){
+                    sp.innerHTML = box[i][k];
+                    sp.className = k;
+                }
+                time.appendChild(sp);
+        }
+        
+        time.className = "date-as-calendar position-pixels";
+        
+        $('.cartHeader').append(time);
+
         $("#menu-toggle").on('click', function () {
           $('.flexmenu').toggleClass('active');
         });
@@ -243,56 +268,97 @@
         $(".mega-menu .close").on('click', function () {
           $('.mega-menu').removeClass('mega-active');
         }); 
-        
+
+
         
         for (var i=0; i<Object.keys(data).length; i++){
             var $productTemplate = $($('#productItem').html());
             $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
         }
 
-
         $(".buy-now").each(function(index, element){
             $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name')
-                .css('display', 'none');
-                $(e.target).parents('.product').find('.icon').css('display', 'none');
-                $(e.target).parents('.product').find('.buy-now').css('display','none');
-                $(e.target).parents('.product').find(' .product-detail').css('display', 'block');
+                $(e.target).parents('.product').find('.product-name').slideUp();
+                $(e.target).parents('.product').find('.icon').fadeOut("1000");
+                $(e.target).parents('.product').find('.buy-now').slideUp();
+                $(e.target).parents('.product').find(' .product-detail').slideDown("fast");
                 $(e.target).parents('.product-menu').css('top', '40%');
             });
         });
         
         $(".cancel").each(function(index, element){
             $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name')
-                .css('display', 'block');
-                $(e.target).parents('.product').find('.icon').css('display', 'block');
-                $(e.target).parents('.product').find('.buy-now').css('display','block');
-                $(e.target).parents('.product').find(' .product-detail').css('display', 'none');
+                $(e.target).parents('.product').find('.product-name').slideToggle();
+                $(e.target).parents('.product').find('.icon').fadeIn(3000);
+                $(e.target).parents('.product').find('.buy-now').slideToggle("fast", "swing");
+                $(e.target).parents('.product').find(' .product-detail').slideToggle("slow", "linear");
                 $(e.target).parents('.product-menu').css('top', '80%');
             });
         });
-        
+                
         const $template = $($('#cartItem').html());
         
+
         $(".add-to-cart").each(function(index, element){
             $(element).on('click', function (e) {
+                let template = $template.clone();
+                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+                template.find("span.item-name").text($(this).parents(".product").children(".product-name").text()); 
+                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
+                template.find(".item-remove").on('click', function() {$(this).parent().remove();});
+                $(".cart-items").append(template);
+
+                // Поиск элемента с заданным номером
+
+                var imgToDrag = $(e.target).parents('.product').find("img").eq(0);
+
+                if (imgToDrag) {
+                    var imgClone = imgToDrag.clone()
+                        .offset({
+                            top: imgToDrag.offset().top,
+                            left: imgToDrag.offset().left
+                        })
+                        .css({
+                            'opacity': '0.5',
+                            'position': 'absolute',
+                            'height': '150px',
+                            'width': '150px',
+                            'z-index': '100'
+                        })
+                        .appendTo($('body'))
+                            .animate({
+                            'top': $('#cart-trigger').offset().top + 10,
+                                'left': $('#cart-trigger').offset().left + 10,
+                                'width': 75,
+                                'height': 75
+                        }, 1000);
+            
+                    imgClone.animate({
+                        'width': 0,
+                            'height': 0
+                    }, function () {
+                        $(this).detach()
+                    });  
+                }
+    
                 var y = 180;    
                 $(e.target).parents('.product-wrapper')
                 .css('transform', 'rotateY(' + y + 'deg)');
                 $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-
-                let template = $template.clone();
-                
-                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
-        
-                template.find(".item-quantities").after(' '+$(this).parents(".product").children(".product-name").text()); 
-        
-                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
-                $(".cart-items").append(template);
+                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                    $(this).css({
+                        'transform': 'rotateY(0deg)'
+                    }).dequeue();
+                    $(e.target).parents('.product').find('p').slideDown();
+                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                    $(e.target).parents('.product').find('.product-detail').toggle();
+                    $(e.target).parents('.product').find('.buy-now').toggle();
+                    $(e.target).parents('.product').find('.icon').toggle();
+                });
             });
-        });
 
+        });
+        
         $(".plus").click(function() {
             var val = parseInt($(this).prev().attr('value'));
             $(this).prev().attr('value', val+1);
