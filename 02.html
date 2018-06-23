@@ -195,6 +195,7 @@
     <script src="js/data.js"></script>
 
     <script>
+
     function toggle_panel(panel, background_layer) {
                 if (panel.hasClass('show-sidebar')) {
                     panel.removeClass('show-sidebar');
@@ -250,50 +251,170 @@
             $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
         }
 
+
+        
+
+        function saveCart(shoppingCart) {
+            // Store data
+            // localStorage.shoppingCart = JSON.stringify(shoppingCart);
+
+            localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+
+            console.log(JSON.stringify(shoppingCart));
+        }
+
+        if (window.localStorage) {
+            var shoppingCart = [];
+            let item = { 
+                    Id: 1, 
+                    Product: "name",  
+                    Price: 111, 
+                    Quantity: 2, 
+                    Picture: "picture" 
+                }; 
+
+            shoppingCart.push(item);
+            saveCart(shoppingCart);
+        } else {
+            console.log('объект localStorage не поддерживается');
+        }
+
         $(".buy-now").each(function(index, element){
             $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name').fadeOut("slow");
-                $(e.target).parents('.product').find('.icon').fadeOut("slow");
-                $(e.target).parents('.product').find('.buy-now').fadeOut(1000);
-                $(e.target).parents('.product').find(' .product-detail').fadeIn("fast");
+                $(e.target).parents('.product').find('.product-name').slideUp();
+                $(e.target).parents('.product').find('.icon').fadeOut("1000");
+                $(e.target).parents('.product').find('.buy-now').slideUp();
+                $(e.target).parents('.product').find(' .product-detail').slideDown("fast");
                 $(e.target).parents('.product-menu').css('top', '40%');
             });
         });
         
         $(".cancel").each(function(index, element){
             $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name').fadeTo("slow", 1);
+                $(e.target).parents('.product').find('.product-name').slideToggle();
                 $(e.target).parents('.product').find('.icon').fadeIn(3000);
-                $(e.target).parents('.product').find('.buy-now').fadeToggle(3000);
-                $(e.target).parents('.product').find(' .product-detail').fadeToggle(300);
+                $(e.target).parents('.product').find('.buy-now').slideToggle("fast", "swing");
+                $(e.target).parents('.product').find(' .product-detail').slideToggle("slow", "linear");
                 $(e.target).parents('.product-menu').css('top', '80%');
             });
         });
                 
         const $template = $($('#cartItem').html());
         
+
         $(".add-to-cart").each(function(index, element){
+            $(element).on('click', function (e) {
+                let template = $template.clone();
+                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+                template.find("span.item-name").text($(this).parents(".product").children(".product-name").text()); 
+                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
+                template.find(".item-remove").on('click', function() {$(this).parent().remove();});
+                $(".cart-items").append(template);
+
+                // Поиск элемента с заданным номером
+
+                var imgToDrag = $(e.target).parents('.product').find("img").eq(0);
+
+                if (imgToDrag) {
+                    var imgClone = imgToDrag.clone()
+                        .offset({
+                            top: imgToDrag.offset().top,
+                            left: imgToDrag.offset().left
+                        })
+                        .css({
+                            'opacity': '0.5',
+                            'position': 'absolute',
+                            'height': '150px',
+                            'width': '150px',
+                            'z-index': '100'
+                        })
+                        .appendTo($('body'))
+                            .animate({
+                            'top': $('#cart-trigger').offset().top + 10,
+                                'left': $('#cart-trigger').offset().left + 10,
+                                'width': 75,
+                                'height': 75
+                        }, 1000);
+            
+                    imgClone.animate({
+                        'width': 0,
+                            'height': 0
+                    }, function () {
+                        $(this).detach()
+                    });  
+                }
+    
+                var y = 180;    
+                $(e.target).parents('.product-wrapper')
+                .css('transform', 'rotateY(' + y + 'deg)');
+                $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
+                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                    $(this).css({
+                        'transform': 'rotateY(0deg)'
+                    }).dequeue();
+                    $(e.target).parents('.product').find('p').slideDown();
+                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                    $(e.target).parents('.product').find('.product-detail').toggle();
+                    $(e.target).parents('.product').find('.buy-now').toggle();
+                    $(e.target).parents('.product').find('.icon').toggle();
+                });
+            });
+
+        });
+
+        /*
+                $(".add-to-cart").each(function(index, element){
             $(element).on('click', function (e) {
                 var y = 180;    
                 $(e.target).parents('.product-wrapper')
                 .css('transform', 'rotateY(' + y + 'deg)');
                 $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-
-                let template = $template.clone();
-                
-                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
+                var imgtodrag = $(e.target).parents('.product').find("img").eq(0);
         
-                template.find("span.item-name").text($(this).parents(".product").children(".product-name").text()); 
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone()
+                .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+            })
+                .css({
+                'opacity': '0.5',
+                    'position': 'absolute',
+                    'height': '150px',
+                    'width': '150px',
+                    'z-index': '100'
+            })
         
-                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
-
-                template.find(".item-remove").on('click', function() {
-                    $(this).parent().remove();
+            .appendTo($('body'))
+                .animate({
+                'top': $('.shopping-cart').offset().top + 10,
+                    'left': $('.shopping-cart').offset().left + 10,
+                    'width': 75,
+                    'height': 75
+            }, 1000);
+        
+        }
+        // imgclone.animate({
+        //     'width': 0,
+        //         'height': 0
+        // }, function () {
+        //     $(this).detach()
+        // });  
+                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                    $(this).css({
+                        'transform': 'rotateY(0deg)'
+                    }).dequeue();
+                    $(e.target).parents('.product').find('p').slideDown();
+                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                    $(e.target).parents('.product').find('.product-detail').toggle();
+                    $(e.target).parents('.product').find('.buy-now').toggle();
+                    $(e.target).parents('.product').find('.icon').toggle();
                 });
-                $(".cart-items").append(template);
+                
             });
         });
-
+        */ 
+        
         $(".plus").click(function() {
             var val = parseInt($(this).prev().attr('value'));
             $(this).prev().attr('value', val+1);

@@ -28,16 +28,7 @@
         </ul>
       </nav>
     </nav>
-    <h1>Hello, Cart!</h1>  
-    
-    <div class="image-slider-wrapper">
-      <ul id="image_slider">
-        <li><img src="images/03.jpg"></li>
-        <li><img src="images/01.jpg"></li>
-        <li><img src="images/02.jpg"></li>
-        <li><img src="images/03.jpg"></li>
-      </ul>
-    </div>
+    <h1>Hello, Cart!</h1>        
         
     <div class="grid-layout">
     </div> 
@@ -51,7 +42,7 @@
         <aside id="cart-sidebar" class="cart">
             <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
             
-            <h2 class="cartHeader">Cart</h2>
+            <h2>Cart</h2>
             <!-- cart-items start-->
             <ul class="cart-items">
                 <li>
@@ -67,19 +58,7 @@
             </div> <!-- cart-total -->
         
             <a href="#" class="checkout-button">Checkout</a>
-
-
-            <div class="box">
-                <div class="clock">
-                  <span class="hours"></span>
-                  <span class="minutes"></span>
-                </div>
-                <div class="date">
-                  <div id="daymonth"></div>
-                  <div id="year"></div>
-                </div>
-            </div>
-        
+            <a href="#" class="clear-cart">Clear Cart</a>
         </aside> <!-- cart end -->
         <!-- Aside Area end -->
     
@@ -121,12 +100,14 @@
 
         <template id="cartItem">
                 <li>
-                  <span class="productInCart"></span>
+                  <span class="productInCart" id=""></span>
                     <span class="qty">
                       <span class="item-quantities">
                       </span>
                     </span>
                     <span class="item-name">
+                    </span>
+                    <span class="item-price">
                     </span>
                     <span class="item-prices">
                     </span>
@@ -217,6 +198,7 @@
     <script src="js/data.js"></script>
 
     <script>
+
     function toggle_panel(panel, background_layer) {
                 if (panel.hasClass('show-sidebar')) {
                     panel.removeClass('show-sidebar');
@@ -245,133 +227,56 @@
         return $template;
     }
 
+    function saveCart(shoppingCart) {
+        // Store data
+        localStorage.shoppingCart = JSON.stringify(shoppingCart);
+        console.log(JSON.stringify(shoppingCart));
+        }
+
+    function showCart(shoppingCart){
+        if (shoppingCart.length == 0) {
+            console.log("Your Shopping Cart is Empty!");
+            return;
+        } 
+        $(".cart-items").empty();
+        
+        for (var i in shoppingCart) {
+            var $template = $($('#cartItem').html()),
+                item = shoppingCart[i];
+                
+            $template.find("span.item-quantities").text(item.Quantity);
+            $template.find(".item-name").text(item.Product); 
+            $template.find('.item-price').text(item.Price);
+            $template.find('.item-prices').text(item.Quantity * item.Price);
+            $template.find('span.qty').attr('style', 'background-image:'+ 'url('+item.Picture+')');
+            $(".cart-items").append($template);
+        }
+    }
 
     $(function(){
 
+      if (window.localStorage) {
 
-    var carousel;
-    var liItems;
-    var numberOfLis;
-    var sliderWidth = 0;
-    var imageWidth;
-    var currentImage = 0;
-    function init(){
-        carousel = document.getElementById('image_slider');
-        liItems = carousel.children;
-        numberOfLis = liItems.length;
-        for (i = 0; i < numberOfLis; i++){
-                imageWidth = liItems[i].childNodes[0].clientWidth;
-                sliderWidth += imageWidth;
-            }
-        carousel.style.width = parseInt(sliderWidth) + 'px';
-        slider();
-    }
-    function slider(){
-            animate({
-                delay:17,
-                duration: 3000,
-                delta:function(p){return Math.max(0, -1 + 2 * p)},
-                step:function(delta){
-                        carousel.style.left = '-' + parseInt(currentImage * imageWidth + delta * imageWidth) + 'px';
-                    },
-                callback:function(){
-                    currentImage++;
-                    if(currentImage < numberOfLis-1){
-                        slider();
-                    }
-                    else{
-                        var left = (numberOfLis - 1) * imageWidth;
-                        setTimeout(function(){goBack(left)},2000);
-                        setTimeout(slider, 4000);
-                    }
-                }
-            });
-    }
-    function goBack(left_limits){
-        currentImage = 0;
-        setInterval(function(){
-            if(left_limits >= 0){
-                carousel.style.left = '-' + parseInt(left_limits) + 'px';
-                left_limits -= imageWidth / 10;
-            }
-        }, 17);
-    }
-    function animate(opts){
-        var start = new Date;
-        var id = setInterval(function(){
-            var timePassed = new Date - start;
-            var progress = timePassed / opts.duration
-            if(progress > 1){
-                progress = 1;
-            }
-            var delta = opts.delta(progress);
-            opts.step(delta);
-            if (progress == 1){
-                clearInterval(id);
-                opts.callback();
-            }
-        }, opts.dalay || 17);
-    }
-    init();
+        var shoppingCart = [];
 
+        // После получения данных из LocalStorage - производим обратное преобразование
+        // Получим наш сериализованный объект через API
+        // Одновременно преобразуем к обычному объекту JavaScript
 
+        if (localStorage.shoppingCart){
+            shoppingCart = JSON.parse(localStorage.shoppingCart);
+        }
 
         $("#cart-trigger").on('click', function () {
+
+            showCart(shoppingCart);
+
             toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
         });
         
         $("#cart-sidebar .remove").on('click', function () {
             toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
         });
-
-        var box = [],
-            months = [ "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Верпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
-            weekday = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'];
-        
-        var date = new Date();
-        box.push({"weekday":weekday[date.getDay()-1]});
-        box.push({"day":date.getDate()});
-        box.push({"month":months[date.getMonth()]});
-        box.push({"year":date.getFullYear()});
-        
-        var span = document.createElement('span'),
-            time = document.createElement('time');
-        for (var i=0; i<box.length; i++){
-            var sp = span.cloneNode(false);
-                for (var k in box[i]){
-                    sp.innerHTML = box[i][k];
-                    sp.className = k;
-                }
-                time.appendChild(sp);
-        }
-        
-        time.className = "date-as-calendar position-pixels";
-        
-        $('.cartHeader').append(time);
-
-
-        var date = new Date(),
-            year = date.getFullYear(),
-            month = date.getMonth(),
-            day = date.getUTCDate();
-            document.getElementById('daymonth').innerHTML = months[month] + " " + day;
-            document.getElementById('year').innerHTML = year;
-            
-            var clockH = document.querySelector(".hours");
-            var clockM = document.querySelector(".minutes");
-            
-            function times() {
-                var d = new Date(),
-                    s = d.getSeconds() * 6,
-                    m = d.getMinutes() * 6 + (s / 60),
-                    h = d.getHours() % 12 / 12 * 360 + (m / 12);
-                    clockH.style.transform =  "rotate("+h+"deg)";
-                    clockM.style.transform =  "rotate("+m+"deg)";
-                }
-            var clock = setInterval(times, 1000);
-            
-            // times();
-
 
         $("#menu-toggle").on('click', function () {
           $('.flexmenu').toggleClass('active');
@@ -384,13 +289,12 @@
           $('.mega-menu').removeClass('mega-active');
         }); 
 
-
-        
+       
         for (var i=0; i<Object.keys(data).length; i++){
             var $productTemplate = $($('#productItem').html());
             $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
         }
-
+    
         $(".buy-now").each(function(index, element){
             $(element).on('click', function (e) {
                 $(e.target).parents('.product').find('.product-name').slideUp();
@@ -411,17 +315,38 @@
             });
         });
                 
-        const $template = $($('#cartItem').html());
         
 
         $(".add-to-cart").each(function(index, element){
             $(element).on('click', function (e) {
-                let template = $template.clone();
-                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
-                template.find("span.item-name").text($(this).parents(".product").children(".product-name").text()); 
-                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
-                template.find(".item-remove").on('click', function() {$(this).parent().remove();});
-                $(".cart-items").append(template);
+
+                let id = $(this).parents('.product-menu').attr("productId");
+                let price = $(this).parents(".product-menu").find(".product-price").text();
+                let name = $(this).parents(".product").children(".product-name").text();
+                let quantity = $(this).parents(".product-menu").find(".quantity").val();
+                let picture = $(this).parents(".product").find("img").attr('src');
+
+                for (let i in shoppingCart) {
+                    if(shoppingCart[i].Id == id) {
+                       shoppingCart[i].Quantity = parseInt(shoppingCart[i].Quantity) + parseInt(quantity);
+                       saveCart(shoppingCart);
+                       return;
+                    }
+                }
+
+                let item = { 
+                    Id: id, 
+                    Product: name,  
+                    Price: price, 
+                    Quantity: quantity, 
+                    Picture: picture 
+                }; 
+
+                shoppingCart.push(item);
+
+                // console.log(shoppingCart);
+
+                saveCart(shoppingCart);
 
                 // Поиск элемента с заданным номером
 
@@ -473,6 +398,7 @@
             });
 
         });
+
         
         $(".plus").click(function() {
             var val = parseInt($(this).prev().attr('value'));
@@ -536,10 +462,17 @@
             });
         });
 
+        $('body').on('click', '.cart .clear-cart', function () {
+            localStorage.removeItem('shoppingCart');
+            $(".cart-items").empty();
+            shoppingCart = [];
 
+        });
 
+      } else {
+        console.log('объект localStorage не поддерживается');
+      }
     });
-
 
     </script>
 

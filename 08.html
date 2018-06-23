@@ -42,7 +42,7 @@
         <aside id="cart-sidebar" class="cart">
             <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
             
-            <h2 class="cartHeader">Cart</h2>
+            <h2>Cart</h2>
             <!-- cart-items start-->
             <ul class="cart-items">
                 <li>
@@ -58,6 +58,7 @@
             </div> <!-- cart-total -->
         
             <a href="#" class="checkout-button">Checkout</a>
+            <a href="#" class="clear-cart">Clear Cart</a>
         </aside> <!-- cart end -->
         <!-- Aside Area end -->
     
@@ -195,6 +196,7 @@
     <script src="js/data.js"></script>
 
     <script>
+
     function toggle_panel(panel, background_layer) {
                 if (panel.hasClass('show-sidebar')) {
                     panel.removeClass('show-sidebar');
@@ -223,40 +225,44 @@
         return $template;
     }
 
+    function saveCart(shoppingCart) {
+        // Store data
+        localStorage.shoppingCart = JSON.stringify(shoppingCart);
+        console.log(JSON.stringify(shoppingCart));
+        }
+
+    function showCart(shoppingCart){
+        if (shoppingCart.length == 0) {
+            console.log("Your Shopping Cart is Empty!");
+            return;
+        } 
+        $(".cart-items").empty();
+    }
 
     $(function(){
+
+      if (window.localStorage) {
+
+        var shoppingCart = [];
+
+        // После получения данных из LocalStorage - производим обратное преобразование
+        // Получим наш сериализованный объект через API
+        // Одновременно преобразуем к обычному объекту JavaScript
+
+        if (localStorage.shoppingCart){
+            shoppingCart = JSON.parse(localStorage.shoppingCart);
+        }
+
         $("#cart-trigger").on('click', function () {
+
+            showCart(shoppingCart);
+
             toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
         });
         
         $("#cart-sidebar .remove").on('click', function () {
             toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
         });
-
-        var box = [],
-            months = [ "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Верпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
-            weekday = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П\'ятниця', 'Субота', 'Неділя'];
-        
-        var date = new Date();
-        box.push({"weekday":weekday[date.getDay()-1]});
-        box.push({"day":date.getDate()});
-        box.push({"month":months[date.getMonth()]});
-        box.push({"year":date.getFullYear()});
-        
-        var span = document.createElement('span'),
-            time = document.createElement('time');
-        for (var i=0; i<box.length; i++){
-            var sp = span.cloneNode(false);
-                for (var k in box[i]){
-                    sp.innerHTML = box[i][k];
-                    sp.className = k;
-                }
-                time.appendChild(sp);
-        }
-        
-        time.className = "date-as-calendar position-pixels";
-        
-        $('.cartHeader').append(time);
 
         $("#menu-toggle").on('click', function () {
           $('.flexmenu').toggleClass('active');
@@ -269,13 +275,12 @@
           $('.mega-menu').removeClass('mega-active');
         }); 
 
-
-        
+       
         for (var i=0; i<Object.keys(data).length; i++){
             var $productTemplate = $($('#productItem').html());
             $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
         }
-
+    
         $(".buy-now").each(function(index, element){
             $(element).on('click', function (e) {
                 $(e.target).parents('.product').find('.product-name').slideUp();
@@ -307,6 +312,32 @@
                 template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
                 template.find(".item-remove").on('click', function() {$(this).parent().remove();});
                 $(".cart-items").append(template);
+
+
+                let id = $(this).parents('.product-menu').attr("productId");
+                
+                let price = $(this).parents(".product-menu").find(".product-price").text();
+                
+                let name = $(this).parents(".product").children(".product-name").text();
+                
+                let quantity = $(this).parents(".product-menu").find(".quantity").val();
+                
+                let picture = $(this).parents(".product").find("img").attr('src');
+                
+
+                let item = { 
+                    Id: id, 
+                    Product: name,  
+                    Price: price, 
+                    Quantity: quantity, 
+                    Picture: picture 
+                }; 
+
+                shoppingCart.push(item);
+
+                // console.log(shoppingCart);
+
+                saveCart(shoppingCart);
 
                 // Поиск элемента с заданным номером
 
@@ -358,6 +389,7 @@
             });
 
         });
+
         
         $(".plus").click(function() {
             var val = parseInt($(this).prev().attr('value'));
@@ -421,10 +453,17 @@
             });
         });
 
+        $('body').on('click', '.cart .clear-cart', function () {
+            localStorage.removeItem('shoppingCart');
+            $(".cart-items").empty();
+            shoppingCart = [];
 
+        });
 
+      } else {
+        console.log('объект localStorage не поддерживается');
+      }
     });
-
 
     </script>
 
