@@ -1,449 +1,123 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
+<!doctype html>
+<html lang="en">
   <head>
+    <title>Hello, AJAX!</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello cart</title>
-    <script defer src="fontawesome/js/fontawesome-all.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <style>
-         
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   </head>
-
   <body>
-    <nav class="navbar">
-      <nav class="wrapper">
-        <div class="logo"><img src="images/logo.png"></div><!-- Logo -->
-        <input type="checkbox" id="menu-toggle" />
-        <label for="menu-toggle" class="label-toggle"></label>
-        <ul class="flexmenu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#" id="catalog">Products</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="#" id="cart-trigger"><i class="fas  fa-shopping-cart"></i>&nbsp;Cart</a></li>
-        </ul>
-      </nav>
-    </nav>
-    <h1>Hello, Cart!</h1>        
-        
-    <div class="grid-layout">
-    </div> 
+
+    <div class="card text-center">
+      <div class="card-header">
+        Hello, AJAX!
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Консоль выполнения запроса:</h4>
+        <p class="card-text" id="console">Обрабатываем ответ сервера.</p>
+        <a href="#" class="btn btn-primary btnGo">Запустить скрипт</a>
+      </div>
+      <div class="card-footer text-muted" id="printResult">
+        ответ сервера
+      </div>
+    </div>
+
     
-    <!-- Footer Area Start -->
-    <footer id="footer">
-        </footer>
-        <!-- Footer Area Stop -->
-        <div id="shadow-layer" class="shadow-layer"></div>
-        <!-- Aside Area Start -->
-        <aside id="cart-sidebar" class="cart">
-            <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
-            
-            <h2>Cart</h2>
-            <!-- cart-items start-->
-            <ul class="cart-items">
-                <li>
-                    <span class="item-quantity"></span> <span class="item-name"></span>
-                    <div class="item-price"></div>
-                    <a href="#0" class="item-remove"></a>
-                </li>
-            </ul> 
-            <!-- cart-items end -->
-        
-            <div class="cart-total">
-                <p>Total <span>$39.96</span></p>
-            </div> <!-- cart-total -->
-        
-            <a href="#" class="checkout-button">Checkout</a>
-        </aside> <!-- cart end -->
-        <!-- Aside Area end -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript">
     
-    
-        <div class="mega-menu">
-            <div class="mega-menu-top">
-                <div class="mega-search">
-                    <label for="mega-search">Search</label>
-                    <input type="search" id="mega-search" placeholder="Search" />
-                </div>
-                <div class="close">
-                    <span>&#10006;</span> 
-                </div>
-            </div>
-            <h3>Catalog</h3>
-            <ul class="nav themes">
-                <li><a href="#"> Mice</a></li>
-                <li><a href="#"> Cats</a></li>
-                <li><a href="#"> Dogs</a></li>
-                <li><a href="#"> Rabbits</a></li>
-                <li><a href="#"> Crocodiles</a></li>
-                <li><a href="#"> Chicks</a></li>
-                <li><a href="#"> Dinosaurs</a></li>
-                <li><a href="#"> Skunks</a></li>
-                <li><a href="#"> Rats</a></li>
-                <li><a href="#"> Crows</a></li>
-            </ul>
-            <footer>
-                <div class="logo-footer">  
-                  <img src="images/logo.png">
-                </div>
-                <ul class="nav footer">
-                    <li>Contact Us</li>
-                    <li>About Us</li>
-                    <li>Privacy Policy</li>
-                </ul>
-            </footer>
-        </div>
+    function CreateRequest()
+    {
+        var httpRequest = false;
 
-        <template id="cartItem">
-                <li>
-                  <span class="productInCart"></span>
-                    <span class="qty">
-                      <span class="item-quantities">
-                      </span>
-                    </span>
-                    <span class="item-name">
-                    </span>
-                    <span class="item-prices">
-                    </span>
-                    <a class="item-remove" href="#0"><i class="fas fa-times"></i></a>
-                </li>
-        </template>
-
-        <template id="productDetail">
-  
-            <figure class="item">
-                <h4 class="product-name">Cool Cat</h4>
-                <div class="image">
-                    <img class="slide" src=""/>
-                    <img class="slide" src="images/cat2.jpg" style="display:none;" />
-                    <img class="slide" src="images/cat3.jpg" style="display:none;" />
-                    <img class="slide" src="images/cat4.jpg" style="display:none;" />
-                </div>
-                
-                <div class="rating">
-                    <button class="prev">&#10094;&#10094;</button>
-                    <button class="next">&#10095;&#10095;</button>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                </div>
-                <figcaption productId="">
-                    <p class="product-description">
-                        I'm just very selective about the reality I choose to accept.
-                    </p>
-                    <div class="price">
-                        <s class="old-price">$24.00</s><b class="product-price">$19.00</b>
-                    </div>
-                </figcaption>
-                <a href="#" class="add-to-cart">Add to Cart</a>
-            </figure>
-        </template>
-
-        <template id="productItem">
-          <article class="grid-item">
-            <div class="product-wrapper">    
-              <div class="product">
-                <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
-                <div class="icon">
-                  <div class="icon-background"></div>
-                    <span class="shopping-cart">
-                      <i class="fas fa-shopping-cart fa-2x"></i>
-                    </span>
-                </div>
-                <div class="product-picture">
-                    <img src="" alt="Nice Cat" class="product-image" />
-                </div>
-                <span class="product-description"></span>
-                <div class="product-menu product-id"  productId=''>
-                  <div class="product-price">
-                    9.99
-                  </div>
-                  <div class="buy-now">
-                    Buy now!
-                  </div>
-                  <div class="product-detail">
-                    Detail
-                  </div>
-                  
-                  <div class="how-many">
-                    <div class="quantity-input">
-                      <input class="minus btn" type="button" value="-">
-                      <input class="input-text quantity text" value="3" size="4">
-                      <input class="plus btn" type="button" value="+">
-                    </div>
-                  </div>
-                  <div class="cancel">
-                    Cancel
-                  </div>
-                  <div class="add-to-cart">
-                    Add to Cart!
-                  </div>
-                </div>
-              </div>
-              <div class="product-back">
-                <span class="check">
-                  <i class="fas fa-check fa-4x"></i>
-                  <p>Success!</p>
-                </span>
-              </div>   
-            </div> 
-          </article> 
-        </template>
-               
-    <script src="js/jquery.min.js"></script>             
-    <script src="js/data.js"></script>
-
-    <script>
-
-    function toggle_panel(panel, background_layer) {
-                if (panel.hasClass('show-sidebar')) {
-                    panel.removeClass('show-sidebar');
-                    background_layer.removeClass('is-visible');
-                } else {
-                    panel.addClass('show-sidebar');
-                    background_layer.addClass('is-visible');
-                }
-    }
-
-    function makeProductItem($template, product){
-        const keys = Object.keys(product);
-        keys.forEach(function(key) {
-            let selector = '.product-'+ key;
-            switch(key){
-                case 'id':
-                    $template.find(selector).attr('productId', product[key]);
-                    break;
-                case 'image':
-                    $template.find(selector).attr('src', "images/"+ product[key]);
-                    break;
-                default:
-                    $template.find(selector).text(product[key]);
+        if (window.XMLHttpRequest)
+        {
+            //Gecko-совместимые браузеры, Safari, Konqueror
+            httpRequest = new XMLHttpRequest();
+            httpRequest.overrideMimeType('text/xml');
+        }
+        else if (window.ActiveXObject)
+        {
+            //Internet explorer
+            try
+            {
+                 httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            }    
+            catch (CatchException)
+            {
+                 httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
             }
-        });
-        return $template;
-    }
-
-
-    $(function(){
-        $("#cart-trigger").on('click', function () {
-            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
-        });
-        
-        $("#cart-sidebar .remove").on('click', function () {
-            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
-        });
-
-        $("#menu-toggle").on('click', function () {
-          $('.flexmenu').toggleClass('active');
-        });
-        
-        $("#catalog").on('click', function () {
-          $('.mega-menu').toggleClass('mega-active');
-        });
-        $(".mega-menu .close").on('click', function () {
-          $('.mega-menu').removeClass('mega-active');
-        }); 
-        
-        
-        for (var i=0; i<Object.keys(data).length; i++){
-            var $productTemplate = $($('#productItem').html());
-            $(".grid-layout").append(makeProductItem($productTemplate, data[i]));
         }
-
-
-        function saveCart(shoppingCart) {
-            // Store data
-            localStorage.shoppingCart = JSON.stringify(shoppingCart);
-            console.log(JSON.stringify(shoppingCart));
+     
+        if (!httpRequest)
+        {
+            console.log("Невозможно создать XMLHttpRequest");
         }
-
-        if (window.localStorage) {
-            var shoppingCart = [];
-            let item = { 
-                    Id: 1, 
-                    Product: "name",  
-                    Price: 111, 
-                    Quantity: 2, 
-                    Picture: "picture" 
-                }; 
-
-            shoppingCart.push(item);
-            // saveCart(shoppingCart);
-
-            // Получим наш сериализованный объект через API
-
-            // var shoppingCartObj = localStorage.getItem("shoppingCart");
-            
-            // var shoppingCartObj = localStorage.shoppingCart;
-            
-            // Одновременно преобразуем к обычному объекту JavaScript
-            
-            // var shoppingCartObj = JSON.parse(localStorage.getItem("shoppingCart"));
-            
-            console.log(shoppingCartObj);
-            // console.log(localStorage.key(0));
-
-            // console.log(localStorage.length);
-
-        } else {
-            console.log('объект localStorage не поддерживается');
-        }
-
-        $(".buy-now").each(function(index, element){
-            $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name').slideUp();
-                $(e.target).parents('.product').find('.icon').fadeOut("1000");
-                $(e.target).parents('.product').find('.buy-now').slideUp();
-                $(e.target).parents('.product').find(' .product-detail').slideDown("fast");
-                $(e.target).parents('.product-menu').css('top', '40%');
-            });
-        });
         
-        $(".cancel").each(function(index, element){
-            $(element).on('click', function (e) {
-                $(e.target).parents('.product').find('.product-name').slideToggle();
-                $(e.target).parents('.product').find('.icon').fadeIn(3000);
-                $(e.target).parents('.product').find('.buy-now').slideToggle("fast", "swing");
-                $(e.target).parents('.product').find(' .product-detail').slideToggle("slow", "linear");
-                $(e.target).parents('.product-menu').css('top', '80%');
-            });
-        });
-                
-        const $template = $($('#cartItem').html());
-        
+        return httpRequest;
+    } 
 
-        $(".add-to-cart").each(function(index, element){
-            $(element).on('click', function (e) {
-                let template = $template.clone();
-                template.find(".item-quantities").text($(this).parents(".product").find(".quantity").val());
-                template.find("span.item-name").text($(this).parents(".product").children(".product-name").text()); 
-                template.find('.item-prices').text($(this).parents(".product").find(".product-price").text());
-                template.find(".item-remove").on('click', function() {$(this).parent().remove();});
-                $(".cart-items").append(template);
 
-                // Поиск элемента с заданным номером
+    document.querySelector('.btnGo').addEventListener('click', function(){
 
-                var imgToDrag = $(e.target).parents('.product').find("img").eq(0);
-
-                if (imgToDrag) {
-                    var imgClone = imgToDrag.clone()
-                        .offset({
-                            top: imgToDrag.offset().top,
-                            left: imgToDrag.offset().left
-                        })
-                        .css({
-                            'opacity': '0.5',
-                            'position': 'absolute',
-                            'height': '150px',
-                            'width': '150px',
-                            'z-index': '100'
-                        })
-                        .appendTo($('body'))
-                            .animate({
-                            'top': $('#cart-trigger').offset().top + 10,
-                                'left': $('#cart-trigger').offset().left + 10,
-                                'width': 75,
-                                'height': 75
-                        }, 1000);
-            
-                    imgClone.animate({
-                        'width': 0,
-                            'height': 0
-                    }, function () {
-                        $(this).detach()
-                    });  
-                }
+    //Создаём запрос
     
-                var y = 180;    
-                $(e.target).parents('.product-wrapper')
-                .css('transform', 'rotateY(' + y + 'deg)');
-                $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-                $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
-                    $(this).css({
-                        'transform': 'rotateY(0deg)'
-                    }).dequeue();
-                    $(e.target).parents('.product').find('p').slideDown();
-                    $(e.target).parents('.product').find('.product-menu').css('top', '80%');
-                    $(e.target).parents('.product').find('.product-detail').toggle();
-                    $(e.target).parents('.product').find('.buy-now').toggle();
-                    $(e.target).parents('.product').find('.icon').toggle();
-                });
-            });
+    var request = CreateRequest();
 
-        });
+    var url = 'http://headers.jsontest.com/';
+    
+    //Проверяем существование запроса
+    
+    if (!request)
+    {
+        console.log("Невозможно создать XMLHttpRequest");
+    }
+    else{
+    console.log("Ура! Мы создали XMLHttpRequest. Что с ним делать?");
 
-        
-        $(".plus").click(function() {
-            var val = parseInt($(this).prev().attr('value'));
-            $(this).prev().attr('value', val+1);
-        });
+    request.onreadystatechange = function(){
+      switch (request.readyState) {
+        case 1: print_console('<div class="alert alert-secondary" role="alert">1: Подготовка к отправке...</div>'); break
+        case 2: print_console('<div class="alert alert-primary" role="alert">2: Отправлен...</div>'); break
+        case 3: print_console('<div class="alert alert-warning" role="alert">3: Идет обмен...</div>'); break
+        case 4:{
+           try {
+           if(request.status==200){
+              print_console('<div class="alert alert-success" role="alert">4: Обмен завершен!</div>');
+              document.getElementById("printResult").innerHTML = "<b>"+request.responseText+"</b>";
+              }else if(request.status==404){
+                print_console('<div class="alert alert-danger" role="alert">Ошибка: запрашиваемый скрипт не найден!</div>');
+              }
+           else {
+            print_console('<div class="alert alert-danger" role="alert">Ошибка: сервер вернул статус: '+ request.status +'</div>');
+           }
 
-        $(".minus").click(function() {
-            var val = parseInt($(this).next().attr('value'));
-            $(this).next().attr('value', val-1);
-        });
+        }
+        catch( e ) {
+          print_console('<div class="alert alert-danger" role="alert">Произошло исключение:  '+ e.description +'</div>');
+        }
+        break
+        }
+       }
+      }
+       request.open ('GET', url, true);
+       this.style.display = 'none';
+       request.send ('');
+     }
+    })
 
-        $(".product-detail").each(function(index, element){
-            $(element).on('click', function () {
-                
-                var $template = $($('#productDetail').html());
-                $template.find('.product-price').text($(this).parents(".product").find(".product-price").text());
-                $template.find('.product-name').text($(this).parents(".product").find(".product-name").text());
-
-                $template.find('img').eq(0).attr('src', 'images/cat3.jpg');
-                
-
-                $(".grid-layout").empty();
-
-                $(".grid-layout").append($template);
-
-                let slideIndex = 1;
-
-                const prev = $(".prev");
-                const next = $(".next");
-
-                function showSlide(n) {
-                    let i;
-                    let x = $(".slide");
-                    if (n > x.length) {
-                        slideIndex = 1
-                    }    
-                    if (n < 1) {
-                        slideIndex = x.length
-                    }
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = "none";  
-                    }
-
-                    x[slideIndex-1].style.display = "block";  
-                }
-
-                showSlide(slideIndex);
-
-                function nextPrev(n) {
-                    showSlide(slideIndex += n);
-                }
-
-                next.click(function () {
-                    nextPrev(1);
-                });
-
-                prev.click(function () {
-                    nextPrev(-1);
-                });
-
-            });
-        });
-
-
-
-    });
-
+    function print_console(text){
+        document.getElementById("console").innerHTML += text;
+    }
 
     </script>
-
   
-    
   </body>
 </html>

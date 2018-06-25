@@ -195,7 +195,7 @@
         </template>
                
     <script src="js/jquery.min.js"></script>             
-    <script src="js/data.js"></script>
+    
 
     <script>
 
@@ -257,11 +257,20 @@
 
       if (window.localStorage) {
 
-        var shoppingCart = [];
+        var data = [];
 
-        // После получения данных из LocalStorage - производим обратное преобразование
-        // Получим наш сериализованный объект через API
-        // Одновременно преобразуем к обычному объекту JavaScript
+        var url = 'https://api.myjson.com/bins/zrs3y';
+
+        $.ajax({
+            url: url,
+            method: 'GET'
+        }).then(
+            function(json_data) {
+            
+            for(var i in json_data)
+                    data.push(json_data[i]);
+
+        var shoppingCart = [];
 
         if (localStorage.shoppingCart){
             shoppingCart = JSON.parse(localStorage.shoppingCart);
@@ -318,11 +327,8 @@
         
 
         $(".add-to-cart").each(function(index, element){
-            $(element).on('click', function (e) {
-
-                
-
-                // Поиск элемента с заданным номером
+          $(element).on('click', function (e) {
+            // Поиск элемента с заданным номером
 
                 var imgToDrag = $(e.target).parents('.product').find("img").eq(0);
 
@@ -471,6 +477,17 @@
 
         });
 
+        $('body').on('click', '.cart-items .item-remove', function () {
+            let index = $(this).parent().attr("id");
+            // console.log('index= ', index);
+
+            shoppingCart.splice(shoppingCart.indexOf(shoppingCart.find(x => x.Id === index)),1); 
+            
+            $(this).parents('li').remove();
+            saveCart(shoppingCart);
+            }
+        );
+    });
       } else {
         console.log('объект localStorage не поддерживается');
       }
