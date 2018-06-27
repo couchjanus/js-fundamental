@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello cart</title>
+    <script defer src="/fontawesome/js/fontawesome-all.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <style>
+       #header {
+            position:relative; 
+            height:150px; 
+            width:350px;
+            margin: 10px auto;
+        }
+       .header {
+           position:absolute; 
+           top:0; 
+           left:0;
+        }
+
+        .cats{
+           display: block;
+           margin: 0 auto;
+        }
+    
+         
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <nav class="wrapper">
+        <div class="logo"><img src="/images/logo.png"></div><!-- Logo -->
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="label-toggle"></label>
+        <ul class="flexmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#" id="catalog">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" id="cart-trigger"><i class="fas  fa-shopping-cart"></i>&nbsp;Cart</a></li>
+        </ul>
+      </nav>
+    </nav>
+    <h1>Fade Carousel</h1>    
+    
+    <header id="header">
+            <div class="header cat1 active">
+                <div class="header-content">
+                    <img src="/images/cat1.jpg" alt="" />
+                </div>
+            </div>
+            <div class="header cat2">
+                <div class="header-content">
+                    <img src="/images/cat2.jpg" alt="" />
+                </div>
+            </div>
+            <div class="header cat3">
+                <div class="header-content">
+                    <img src="/images/cat3.jpg" alt="" />
+                </div>
+            </div>
+    </header>    
+    
+    <div class="cats">
+            <input type="radio" name="navcats" class="b1">
+            <input type="radio" name="navcats"  class="b2">
+            <input type="radio" name="navcats" class="b3">
+    </div>                
+    
+    
+    <div class="grid-layout"></div>
+    
+    </div>            
+    
+    <!-- Footer Area Start -->
+    <footer id="footer">
+    </footer>
+    
+    <script src="/js/jquery.min.js"></script>    
+    <script>
+      
+        
+      
+    $(function(){
+
+        $("#header > div:gt(0)").hide();
+            
+        var carouselInterval = '';
+
+        var carousel = function(){
+            carouselInterval = setInterval(function() { 
+            $('#header > div:first')
+                .fadeOut(500)
+                .next()
+                .fadeIn(500)
+                .end()
+                .appendTo('#header');
+            },  3000);
+        };
+
+        $(carousel()); // Init carousel function
+
+        $("#header").hover(function(){
+            // Stop carousel on hover
+        clearInterval(carouselInterval);
+        },function(){
+            carousel();
+        });
+
+
+        //Direction links
+        $(".b1").click(function(){
+            $(".header").fadeOut(800);
+            $(".cat1").animate({opacity:"show"},800);
+        });
+        $(".b2").click(function(){
+            $(".header").fadeOut(800);
+            $(".cat2").animate({opacity:"show"},800);
+        });
+        $(".b3").click(function(){
+            $(".header").fadeOut(800);
+            $(".cat3").animate({opacity:"show"},800);
+        });
+    });
+
+
+    </script>
+  </body>
+</html>

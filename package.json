@@ -1,0 +1,33 @@
+{
+  "name": "js-fundamental",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/couchjanus/js-fundamental.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Janus Nic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/couchjanus/js-fundamental/issues"
+  },
+  "homepage": "https://github.com/couchjanus/js-fundamental#readme",
+  "devDependencies": {
+    "browser-sync": "^2.24.5",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0"
+  }
+}

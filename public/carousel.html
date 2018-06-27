@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+          <meta charset="utf-8">
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Hello cart</title>
+          <script defer src="/fontawesome/js/fontawesome-all.js"></script>
+          <link rel="stylesheet" href="/css/main.css">
+      
+          <style>
+               
+          </style>
+        </head>
+  <body>
+  <nav class="navbar">
+      <nav class="wrapper">
+        <div class="logo"><img src="/images/logo.png"></div><!-- Logo -->
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="label-toggle"></label>
+        <ul class="flexmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#" id="catalog">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" id="cart-trigger"><i class="fas  fa-shopping-cart shopping-cart shoppingcart"></i>&nbsp;Cart</a></li>
+        </ul>
+      </nav>
+    </nav>
+    
+    <div class="container">
+            <div class="image-slider-wrapper">
+                <ul id="image_slider">
+                  <li><img src="images/03.jpg"></li>
+                  <li><img src="images/01.jpg"></li>
+                  <li><img src="images/02.jpg"></li>
+                  <li><img src="images/03.jpg"></li>
+                </ul>
+            </div>
+    </div>
+          
+    <h1>Hello, Carousel!</h1> 
+        
+      
+  <!-- Footer Area Start -->
+  <footer id="footer">
+      </footer>
+      <!-- Footer Area Stop -->
+      
+      <div id="shadow-layer" class="shadow-layer"></div>
+  <!-- Aside Area Start -->
+  <aside id="cart-sidebar" class="cart">
+      <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
+          
+      <h2>Cart</h2>
+      <!-- cart-items start-->
+      <ul class="cart-items">
+             
+      </ul> 
+      <!-- cart-items end -->
+      
+      <div class="cart-total">
+          <p>Total <span>$00.00</span></p>
+      </div> <!-- cart-total -->
+      
+      <a href="#" class="checkout-button">Checkout</a>
+      <a href="#" class="clear-cart">Clear Cart</a>
+  </aside> <!-- cart end -->
+  <!-- Aside Area end -->
+  <template id="cartItem">
+          <li>
+            <span class="productInCart"></span>
+              <span class="qty">
+                <span class="item-quantities">
+                </span>
+              </span>
+              <span class="item-name">
+              </span>
+              <span class="item-prices">
+              </span>
+              <a class="item-remove" href="#0"><i class="fas fa-times"></i></a>
+          </li>
+  </template>
+  <template id="productItem">
+  
+          <article class="grid-item">
+            <div class="product-wrapper">    
+              <div class="product">
+                <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
+                <div class="icon">
+                  <div class="icon-background"></div>
+                    <span class="shopping-cart">
+                      <i class="fas fa-shopping-cart fa-2x"></i>
+                    </span>
+                  </div>
+                  <div class="product-picture">
+                    <img src="" alt="Nice Cat" />
+                  </div>
+                  <span class="product-description"></span>
+                  <div class="product-menu"  productId='1'>
+                    <div class="product-price">
+                      9.99
+                    </div>
+                    <div class="buy-now">
+                      Buy now!
+                    </div>
+                    <div class="product-detail">
+                      Detail
+                    </div>
+                
+                    <div class="how-many">
+                      <div class="quantity-input">
+                        <input class="minus btn" type="button" value="-">
+                        <input class="input-text quantity text" value="3" size="4">
+                        <input class="plus btn" type="button" value="+">
+                      </div>
+                    </div>
+                    <div class="cancel">
+                      Cancel
+                    </div>
+                    <div class="add-to-cart">
+                      Add to Cart!
+                    </div>
+                  </div>
+              </div>
+              <div class="product-back">
+                  <span class="check">
+                    <i class="fas fa-check fa-4x"></i>
+                    <p>Success!</p>
+                  </span>
+                </div>   
+            </div> 
+            
+          </article> 
+        </template>
+  <template id="productDetail">
+  
+  <figure class="item">
+      <h4 class="product-name">Cool Cat</h4>
+      <div class="image">
+          <img class="slide" src=""/>
+          <img class="slide" src="images/cat2.jpg" style="display:none;" />
+          <img class="slide" src="images/cat3.jpg" style="display:none;" />
+          <img class="slide" src="images/cat4.jpg" style="display:none;" />
+      </div>
+      
+      <div class="rating">
+              <button class="prev">&#10094;&#10094;</button>
+              <button class="next">&#10095;&#10095;</button>
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+      </div>
+      <figcaption productId="">
+          <p class="product-description">
+              I'm just very selective about the reality I choose to accept.
+          </p>
+          <div class="price">
+              <s class="old-price">$24.00</s><b class="product-price">$19.00</b>
+          </div>
+      </figcaption>
+      <a href="#" class="add-to-cart">Add to Cart</a>
+  </figure>
+                
+  
+  </template>
+  <div class="mega-menu">
+          <div class="mega-menu-top">
+              <div class="mega-search">
+                  <label for="mega-search">Search</label>
+                  <input type="search" id="mega-search" placeholder="Search" />
+              </div>
+              <div class="close">
+                  <span>&#10006;</span> 
+              </div>
+          </div>
+          <h3>Catalog</h3>
+          <ul class="nav themes">
+              <li><a href="#"> Mice</a></li>
+              <li><a href="#"> Cats</a></li>
+              <li><a href="#"> Dogs</a></li>
+              <li><a href="#"> Rabbits</a></li>
+              <li><a href="#"> Crocodiles</a></li>
+              <li><a href="#"> Chicks</a></li>
+              <li><a href="#"> Dinosaurs</a></li>
+              <li><a href="#"> Skunks</a></li>
+              <li><a href="#"> Rats</a></li>
+              <li><a href="#"> Crows</a></li>
+          </ul>
+          <footer>
+              <div class="logo-footer">  
+                <img src="images/logo.png">
+              </div>
+              <ul class="nav footer">
+                  <li>Contact Us</li>
+                  <li>About Us</li>
+                  <li>Privacy Policy</li>
+              </ul>
+          </footer>
+      </div>
+               
+    <script src="/js/jquery.min.js"></script>             
+    <script src="/js/main.js"></script>
+    <script src="/js/data.js"></script>
+    
+    <script>
+      
+      var carousel;
+
+var liItems;
+var numberOfLis;
+var sliderWidth = 0;
+var imageWidth;
+var currentImage = 0;
+
+function init(){
+    carousel = document.getElementById('image_slider');
+    liItems = carousel.children;
+    numberOfLis = liItems.length;
+
+    for (i = 0; i < numberOfLis; i++){
+            imageWidth = liItems[i].childNodes[0].clientWidth;
+            sliderWidth += imageWidth;
+        }
+    carousel.style.width = parseInt(sliderWidth) + 'px';
+    slider();
+
+}
+
+function slider(){
+        animate({
+            delay:17,
+            duration: 3000,
+            delta:function(p){return Math.max(0, -1 + 2 * p)},
+            step:function(delta){
+                    carousel.style.left = '-' + parseInt(currentImage * imageWidth + delta * imageWidth) + 'px';
+                },
+            callback:function(){
+                currentImage++;
+                if(currentImage < numberOfLis-1){
+                    slider();
+                }
+                else{
+                    var left = (numberOfLis - 1) * imageWidth;
+                    setTimeout(function(){goBack(left)},2000);
+                    setTimeout(slider, 4000);
+                }
+            }
+        });
+}
+function goBack(left_limits){
+    currentImage = 0;
+    setInterval(function(){
+        if(left_limits >= 0){
+            carousel.style.left = '-' + parseInt(left_limits) + 'px';
+            left_limits -= imageWidth / 10;
+        }
+    }, 17);
+}
+
+function animate(opts){
+    var start = new Date;
+    var id = setInterval(function(){
+        var timePassed = new Date - start;
+        var progress = timePassed / opts.duration
+
+        if(progress > 1){
+            progress = 1;
+        }
+        var delta = opts.delta(progress);
+        opts.step(delta);
+
+        if (progress == 1){
+            clearInterval(id);
+            opts.callback();
+        }
+    }, opts.dalay || 17);
+}
+
+window.onload = init;
+
+    </script>
+    
+  </body>
+</html>

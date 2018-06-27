@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello cart</title>
+    <script defer src="/fontawesome/js/fontawesome-all.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <style>
+         
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <nav class="wrapper">
+        <div class="logo"><img src="/images/logo.png"></div><!-- Logo -->
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="label-toggle"></label>
+        <ul class="flexmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#" id="catalog">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#" id="cart-trigger"><i class="fas  fa-shopping-cart shopping-cart"></i>&nbsp;Cart</a></li>
+        </ul>
+      </nav>
+    </nav>
+    <h1>Hello, Cart!</h1>        
+        
+    <div class="grid-layout">
+      <article class="grid-item">
+        <div class="product-wrapper">    
+          <div class="product">
+            <p class="product-name">Very&nbsp;Big&nbsp;Cat</p>
+            <div class="icon">
+              <div class="icon-background"></div>
+                <span class="shopping-cart">
+                  <i class="fas fa-shopping-cart fa-2x"></i>
+                </span>
+              </div>
+              <div class="product-picture">
+                <img src="images/cat3.jpg" alt="Nice Cat" />
+              </div>
+              <div class="product-menu"  productId='1'>
+                <div class="product-price">
+                  9.99
+                </div>
+                <div class="buy-now">
+                  Buy now!
+                </div>
+                <div class="product-detail">
+                  Detail
+                </div>
+            
+                <div class="how-many">
+                  <div class="quantity-input">
+                    <input class="minus btn" type="button" value="-">
+                    <input class="input-text quantity text" value="3" size="4">
+                    <input class="plus btn" type="button" value="+">
+                  </div>
+                </div>
+                <div class="cancel">
+                  Cancel
+                </div>
+                <div class="add-to-cart">
+                  Add to Cart!
+                </div>
+              </div>
+          </div>
+          <div class="product-back">
+              <span class="check">
+                <i class="fas fa-check fa-4x"></i>
+                <p>Success!</p>
+              </span>
+            </div>   
+        </div> 
+        
+      </article>            
+      <article class="grid-item">
+          <div class="product-wrapper">    
+            <div class="product">
+              <p class="product-name">Very&nbsp;Nice&nbsp;Cat</p>
+              <div class="icon">
+                <div class="icon-background"></div>
+                  <span class="shopping-cart">
+                    <i class="fas fa-shopping-cart fa-2x"></i>
+                  </span>
+                </div>
+                <div class="product-picture">
+                  <img src="images/cat4.jpg" alt="Nice Cat" />
+                </div>
+                <div class="product-menu" productId='2'>
+                  <div class="product-price">
+                    5.55
+                  </div>
+                  <div class="buy-now">
+                    Buy now!
+                  </div>
+                  <div class="product-detail">
+                    Detail
+                  </div>
+              
+                  <div class="how-many">
+                    <div class="quantity-input">
+                      <input class="minus btn" type="button" value="-">
+                      <input class="input-text quantity text" value="1" size="4">
+                      <input class="plus btn" type="button" value="+">
+                    </div>
+                  </div>
+                  <div class="cancel">
+                    Cancel
+                  </div>
+                  <div class="add-to-cart">
+                    Add to Cart!
+                  </div>
+                </div>
+            </div>
+            <div class="product-back">
+                <span class="check">
+                  <i class="fas fa-check fa-4x"></i>
+                  <p>Success!</p>
+                </span>
+              </div>   
+          </div> 
+          
+        </article>            
+  
+    
+    </div>
+    
+    <!-- Footer Area Start -->
+    <footer id="footer">
+      </footer>
+      <!-- Footer Area Stop -->
+      <div id="shadow-layer" class="shadow-layer"></div>
+      <!-- Aside Area Start -->
+      <aside id="cart-sidebar" class="cart">
+          <a href="" class="remove"><i class="fas fa-times fa-2x"></i></a>
+          
+          <h2>Cart</h2>
+          <!-- cart-items start-->
+          <ul class="cart-items">
+             
+          </ul> 
+          <!-- cart-items end -->
+      
+          <div class="cart-total">
+              <p>Total <span>$00.00</span></p>
+          </div> <!-- cart-total -->
+      
+          <a href="#" class="checkout-button">Checkout</a>
+      </aside> <!-- cart end -->
+      <!-- Aside Area end -->
+
+      <template id="cartItem">
+        <li>
+          <span class="productInCart"></span>
+            <span class="qty">
+              <span class="item-quantities">
+              </span>
+              <span class="item-name">
+              </span>
+            </span>
+            <div class="item-prices">
+            </div>
+            <a class="item-remove" href="#0"><i class="fas fa-times"></i></a>
+        </li>
+      </template>
+  
+  
+      <div class="mega-menu">
+          <div class="mega-menu-top">
+              <div class="mega-search">
+                  <label for="mega-search">Search</label>
+                  <input type="search" id="mega-search" placeholder="Search" />
+              </div>
+              <div class="close">
+                  <span>&#10006;</span> 
+              </div>
+          </div>
+          <h3>Catalog</h3>
+          <ul class="nav themes">
+              <li><a href="#"> Mice</a></li>
+              <li><a href="#"> Cats</a></li>
+              <li><a href="#"> Dogs</a></li>
+              <li><a href="#"> Rabbits</a></li>
+              <li><a href="#"> Crocodiles</a></li>
+              <li><a href="#"> Chicks</a></li>
+              <li><a href="#"> Dinosaurs</a></li>
+              <li><a href="#"> Skunks</a></li>
+              <li><a href="#"> Rats</a></li>
+              <li><a href="#"> Crows</a></li>
+          </ul>
+          <footer>
+              <div class="logo-footer">  
+                <img src="images/logo.png">
+              </div>
+              <ul class="nav footer">
+                  <li>Contact Us</li>
+                  <li>About Us</li>
+                  <li>Privacy Policy</li>
+              </ul>
+          </footer>
+      </div>
+               
+    <script src="/js/jquery.min.js"></script>             
+    <!-- <script src="/js/main.js"></script> -->
+
+    <script>
+      function toggle_panel(panel, background_layer) {
+        if (panel.hasClass('show-sidebar')) {
+          panel.removeClass('show-sidebar');
+          background_layer.removeClass('is-visible');
+          } else {
+            panel.addClass('show-sidebar');
+            background_layer.addClass('is-visible');
+            }
+      }
+
+
+        $(function(){
+        $("#cart-trigger").on('click', function () {
+            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
+        });
+        
+        $("#cart-sidebar .remove").on('click', function () {
+            toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
+        });
+
+        $("#menu-toggle").on('click', function () {
+          $('.flexmenu').toggleClass('active');
+        });
+        
+        
+        $("#catalog").on('click', function () {
+          $('.mega-menu').toggleClass('mega-active');
+        });
+        $(".mega-menu .close").on('click', function () {
+          $('.mega-menu').removeClass('mega-active');
+        }); 
+
+        $(".buy-now").each(function(index, element){
+            $(element).on('click', function (e) {
+                $(e.target).parents('.product').find('.product-name')
+                .css('display', 'none');
+                $(e.target).parents('.product').find('.icon').css('display', 'none');
+                $(e.target).parents('.product').find('.buy-now').css('display','none');
+                $(e.target).parents('.product').find(' .product-detail').css('display', 'block');
+                $(e.target).parents('.product-menu').css('top', '40%');
+            });
+        });
+        
+        $(".cancel").each(function(index, element){
+            $(element).on('click', function (e) {
+                $(e.target).parents('.product').find('.product-name')
+                .css('display', 'block');
+                $(e.target).parents('.product').find('.icon').css('display', 'block');
+                $(e.target).parents('.product').find('.buy-now').css('display','block');
+                $(e.target).parents('.product').find(' .product-detail').css('display', 'none');
+                $(e.target).parents('.product-menu').css('top', '80%');
+            });
+        });
+       
+        $(".add-to-cart").each(function(index, element){
+            $(element).on('click', function (e) {
+                var y = 180;    
+                $(e.target).parents('.product-wrapper')
+                .css('transform', 'rotateY(' + y + 'deg)');
+                $(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
+                var imgtodrag = $(e.target).parents('.product').find("img").eq(0);
+                if (imgtodrag) {
+                    var imgclone = imgtodrag.clone()
+                        .offset({
+                        top: imgtodrag.offset().top,
+                        left: imgtodrag.offset().left
+                    })
+                        .css({
+                        'opacity': '0.5',
+                            'position': 'absolute',
+                            'height': '150px',
+                            'width': '150px',
+                            'z-index': '100'
+                    })
+                    .appendTo($('body'))
+                        .animate({
+                        'top': $('.shopping-cart').offset().top + 10,
+                            'left': $('.shopping-cart').offset().left + 10,
+                            'width': 75,
+                            'height': 75
+                    }, 1000);
+            }
+
+            imgclone.animate({
+                'width': 0,
+                'height': 0
+            }, function () {
+                $(this).detach()
+            });  
+
+            $(e.target).parents('.product-wrapper').delay(3000).queue(function() {
+                $(this).css({
+                    'transform': 'rotateY(0deg)'
+                }).dequeue();
+                $(e.target).parents('.product').find('p').slideDown();
+                $(e.target).parents('.product').find('.product-menu').css('top', '80%');
+                $(e.target).parents('.product').find('.product-detail').toggle();
+                $(e.target).parents('.product').find('.buy-now').toggle();
+                $(e.target).parents('.product').find('.icon').toggle();
+            });
+
+            let productId = this.parentNode.getAttribute("productId");
+            console.log(productId);
+      
+            var items = document.querySelector(".cart-items").children;
+
+            var matched = null;
+
+            matched = Array.from(items).filter( (index) => {
+                    return index.getAttribute("id") === "product_"+productId;
+            });
+
+            var q = 0;
+      
+            if (matched.length) {
+                    
+                    q = + parseInt(matched[0].querySelectorAll(':scope > .qty .item-quantities')[0].textContent) + parseInt(this.parentNode.querySelectorAll(":scope > .how-many .quantity-input .quantity")[0].getAttribute('value'));
+                    
+                    matched[0].querySelectorAll(':scope > .qty .item-quantities')[0].textContent = q;
+                
+            } else {
+              let template = document.querySelector('#cartItem').content;
+              template.querySelector('li').setAttribute('id', 'product_' + productId);
+              let quantity = this.parentNode.querySelectorAll(":scope > .how-many .quantity-input .quantity");
+              template.querySelector("span.item-quantities").textContent = quantity[0].getAttribute('value');
+              template.querySelector('.item-prices').setAttribute('id', "price_"+productId);
+              template.querySelector("span.item-name").textContent = ' '+this.parentNode.parentNode.querySelectorAll(":scope > .product-name")[0].textContent; 
+              
+              template.querySelector('.item-prices').textContent = this.parentNode.querySelectorAll(":scope > .product-price")[0].textContent;
+              template.querySelector('span.qty').setAttribute('style', 'background-image:'+ 'url('+this.parentNode.parentNode.querySelector('img').getAttribute('src')+')');
+              document.querySelector('.cart-items').append(document.importNode(template, true));
+
+              }
+              updateTotal();
+            
+            });
+        });
+
+        $('body').on('click', '.cart-items .item-remove', function () {
+            var $this = $(this),
+            $item = $this.parents('li');
+            $item.remove();
+        });
+
+
+        let plus = document.getElementsByClassName('plus');
+        plus = Array.prototype.slice.call(plus); // теперь plus - массив
+        plus.forEach(function(elem) {
+          elem.addEventListener('click', function() {
+              let val = parseInt(this.previousElementSibling.getAttribute('value'));
+              this.previousElementSibling.setAttribute('value', val+1);
+              });
+        });
+
+        let minus = document.getElementsByClassName('minus');
+        minus = Array.prototype.slice.call(minus); // теперь minus - массив
+        minus.forEach(function(elem) {
+          elem.addEventListener('click', function() {
+              let val = parseInt(this.nextElementSibling.getAttribute('value'));
+              this.nextElementSibling.setAttribute('value', val+1);
+              });
+        });
+
+
+        function updateTotal() {
+          var quantities = 0,
+          total = 0,
+          
+          $cartTotal = $('.cart-total span'),
+          items = $('.cart-items').children();
+
+          items.each(function (index, item) {
+              var $item = $(item);
+              total += parseFloat($item.find('.item-prices').text());
+          });
+
+          $cartTotal.text(parseFloat(Math.round(total * 100) / 100).toFixed(2));
+
+          if (total === 0 ){
+            
+            $('.shopping-cart').fadeOut(500, function() {
+                    $(this).css({
+                        'backgroundColor':'',
+                        'borderRadius': '0%',
+                        'transform': 'scale(1, 1)'
+                        });
+                });
+          
+            $('.shopping-cart').fadeIn(500);        
+          }
+      }
+
+
+
+      });
+
+    </script>
+
+  
+    
+  </body>
+</html>
